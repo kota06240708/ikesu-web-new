@@ -1,0 +1,11 @@
+{
+  "siteWide": {
+    "title": "example page",
+    "description": "example page",
+    "page": [
+      {
+        "title": "example page"
+      }
+    ]
+  }
+}
