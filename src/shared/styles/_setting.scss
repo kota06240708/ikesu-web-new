@@ -83,6 +83,7 @@ li {
   transform-origin: right;
   transition: transform 0.2s ease;
   background-color: #000;
+  display: block;
 }
 
 
@@ -322,4 +323,82 @@ $logoWidth: 40;
 .sw-menu-link {
   display: block;
   text-decoration: none;
+}
+
+// ==============================================
+// NAV
+// ==============================================
+
+.sw-nav-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: $Z_INDEX_NAV;
+  pointer-events: none;
+
+  // アニメーションを入れるときに外す
+  display: none;
+
+  &.open {
+    pointer-events: auto;
+  }
+}
+
+.sw-nav-inner {
+  width: 100%;
+  padding-top:  120px;
+}
+
+.sw-nav-list {
+  width: 100%;
+  border-bottom: solid 1px #363636;
+
+  &:first-child {
+    border-top: solid 1px #363636;
+  }
+}
+
+.sw-nav-link {
+  text-decoration: none;
+  padding: 40px 0 40px 100px;
+  display: block;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    transition: transform 0.4s ease;
+    transform-origin: right;
+    transform: scaleX(0);
+    z-index: 0;
+  }
+
+  &:hover {
+    .sw-nav-text {
+      color: #000;
+    }
+
+    &::before {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
+  }
+}
+
+.sw-nav-text {
+  $fontSize: 20;
+  $lineHeight: 19;
+
+  font-size: $fontSize + px;
+  letter-spacing: 0.065em;
+  color: #fff;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+  position: relative;
+  z-index: 1;
 }

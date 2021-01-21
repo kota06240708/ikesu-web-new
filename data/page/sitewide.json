@@ -6,6 +6,28 @@
       {
         "title": "example page"
       }
+    ],
+    "link": [
+      {
+        "title": "top",
+        "link": "/"
+      },
+      {
+        "title": "who we are",
+        "link": "/"
+      },
+      {
+        "title": "creators",
+        "link": "/"
+      },
+      {
+        "title": "projects",
+        "link": "/"
+      },
+      {
+        "title": "contact",
+        "link": "/"
+      }
     ]
   }
 }

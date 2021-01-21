@@ -10,3 +10,11 @@ div
           span.sw-header-toggle
         .sw-header-toggle-contents
           span.sw-header-toggle
+
+  .sw-nav-wrap
+    .sw-nav-inner
+      ul.sw-nav-list-wrap
+        each item in data.siteWide.link
+          li.sw-nav-list
+            a.sw-nav-link(href=item.link)
+              p.sw-nav-text #{item.title}
