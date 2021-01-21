@@ -29,6 +29,64 @@ li {
 }
 
 // ==============================================
+// LOGO
+// ==============================================
+
+.sw-logo-wrap {
+  display: block;
+
+  &.open {
+    .sw-logo-path {
+      fill: #afafaf;
+    }
+  }
+}
+
+.sw-logo-path {
+  fill: #000;
+  transition: fill 0.2s ease;
+}
+
+// ==============================================
+// BG
+// ==============================================
+
+.sw-bg-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $Z_INDEX_BG;
+  pointer-events: none;
+
+  &.open {
+    pointer-events: auto;
+
+    .sw-bg {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}
+
+.sw-bg-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.sw-bg {
+  width: 12.5%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+  background-color: #000;
+}
+
+
+// ==============================================
 // HEADING
 // ==============================================
 
@@ -38,9 +96,10 @@ $logoWidth: 40;
   position: fixed;
   top: 0;
   left: 0;
-  padding: percentage(38 / $X_LARGE_SCREEN_WIDTH) percentage(30 / $X_LARGE_SCREEN_WIDTH) 0;
+  width: 100px;
   background-color: #fff;
   height: 100vh;
+  z-index: $Z_INDEX_HEADING;
 }
 
 .sw-heading-inner {
@@ -110,4 +169,157 @@ $logoWidth: 40;
     transform-origin: right;
     transform: rotate(25deg);
   }
+}
+
+// ==============================================
+// HEADER
+// ==============================================
+
+.sw-header-wrap {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $Z_INDEX_HEADER;
+}
+
+.sw-header-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  justify-content: space-between;
+}
+
+.sw-header-link {
+  display: block;
+}
+
+.sw-header-toggle-wrap {
+  width: 120px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+
+  &.open {
+    .sw-header-toggle-contents {
+      &:nth-child(1),
+      &:nth-child(2) {
+        top: 50%;
+      }
+
+      &:nth-child(1) {
+        transform: translate(-50%, -50%) rotate(15deg);
+      }
+
+      &:nth-child(2) {
+        transform: translate(-50%, -50%) rotate(-15deg);
+      }
+    }
+
+    .sw-header-toggle {
+      background-color: #fff;
+    }
+  }
+}
+
+.sw-header-toggle-contents {
+  width: 85px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) rotate(0);
+  transition: transform 0.2s 0.1s ease, top 0.2s ease;
+
+  &:nth-child(1) {
+    top: calc(50% + 6px);
+  }
+
+  &:nth-child(2) {
+    top: calc(50% - 8px);
+  }
+}
+
+.sw-header-toggle {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: background-color 0.2s ease;
+  background-color: #000;
+}
+
+// ==============================================
+// MENU
+// ==============================================
+
+.sw-menu-wrap {
+  position: absolute;
+  right: percentage(105 / $X_LARGE_SCREEN_WIDTH);
+  bottom: percentage(42 / $X_LARGE_SCREEN_WIDTH);
+}
+
+.sw-menu-contents-wrap {
+  display: flex;
+}
+
+.sw-menu-contents {
+  margin-right: 120px;
+  white-space: nowrap;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.sw-menu-contents-title-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.sw-menu-contents-title {
+  $fontSize: 16;
+  $lineHeight: 19;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: $COLOR_TEXT_SECONDARY;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  display: inline-block;
+  padding-right: 6px;
+  background-color: $COLOR_BG_PRIMARY;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.sw-menu-contents-line {
+  width: 173px;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  z-index: 0;
+}
+
+.sw-menu-contents-description {
+  $fontSize: 15;
+  $lineHeight: 20;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  letter-spacing: 0.1em;
+  color: $COLOR_TEXT_PRIMARY;
+
+  &.hidden {
+    min-width: 170px;
+    min-height: 38px;
+  }
+}
+
+.sw-menu-link {
+  display: block;
+  text-decoration: none;
 }

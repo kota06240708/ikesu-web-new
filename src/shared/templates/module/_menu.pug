@@ -1,0 +1,12 @@
+mixin menu(data)
+  .sw-menu-wrap
+    ul.sw-menu-contents-wrap
+
+      each item in data
+        li.sw-menu-contents
+          a.sw-menu-link(href=item.link)
+            .sw-menu-contents-title-wrap
+              h2.sw-menu-contents-title #{item.title}
+              .sw-menu-contents-line
+                span.sw-line
+            p.sw-menu-contents-description(class=`${item.description === '' ? 'hidden' : ''}`) !{item.description.replace(/\r?\n|\r/g,"<br>")}

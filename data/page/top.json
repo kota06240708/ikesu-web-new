@@ -2,7 +2,19 @@
   "top": {
     "title": "example page",
     "description": "example page",
-    "author": "example page"
+    "author": "example page",
+    "menu": [
+      {
+        "title": "projects",
+        "description": "Take a look at what\nwe’ve done.",
+        "link": "#"
+      },
+      {
+        "title": "contact",
+        "description": "Have a project you’d\nlike to talk to us",
+        "link": "#"
+      }
+    ]
   },
   "member": [
     {
