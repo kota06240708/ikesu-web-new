@@ -53,3 +53,10 @@ $ yarn browser
 ├── src                 # 実際に手を動かすファイル
 └── system              # ビルド環境
 ```
+
+## barba.js
+[https://www.willstyle.co.jp/blog/3055/](https://www.willstyle.co.jp/blog/3055/)
+[https://qiita.com/miwashutaro0611/items/bc4cf66bef3a825ace1c](https://qiita.com/miwashutaro0611/items/bc4cf66bef3a825ace1c)
+
+## 管理画面
+[https://89-studio.microcms.io/apis/product](https://89-studio.microcms.io/apis/product)

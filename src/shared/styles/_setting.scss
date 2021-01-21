@@ -6,9 +6,13 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.4;
-  letter-spacing: 0.15em;
-  position: relative;
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  background-color: $COLOR_BG_PRIMARY;
 }
 
 h1,
@@ -22,4 +26,88 @@ h6 {
 
 li {
   list-style: none;
+}
+
+// ==============================================
+// HEADING
+// ==============================================
+
+$logoWidth: 40;
+
+.sw-heading-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: percentage(38 / $X_LARGE_SCREEN_WIDTH) percentage(30 / $X_LARGE_SCREEN_WIDTH) 0;
+  background-color: #fff;
+  height: 100vh;
+}
+
+.sw-heading-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sw-heading-link {
+  width: $logoWidth + px;
+  display: block;
+}
+
+.sw-heading-text-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) rotate(90deg);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sw-Heading-line {
+  width: 455px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: $COLOR_LINE_PRIMARY;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.sw-heading-text {
+  $fontSize: 14;
+  $lineHeight: 17;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  letter-spacing: 0.12em;
+  color: $COLOR_TEXT_PRIMARY;
+  padding: 0 25px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+// ==============================================
+// LINE
+// ==============================================
+
+.sw-line {
+  width: 100%;
+  height: 1px;
+  background-color: $COLOR_LINE_PRIMARY;
+  position: relative;
+  display: block;
+
+  &::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background-color: $COLOR_LINE_PRIMARY;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: right;
+    transform: rotate(25deg);
+  }
 }

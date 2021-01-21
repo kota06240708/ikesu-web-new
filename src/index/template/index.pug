@@ -5,5 +5,29 @@ block vars
     var title = 'document'
 
 block main
-  .test-wrap
+  .top-wrap
+    include /shared/templates/module/_heading
+
+    .sw-menu-wrap
+      ul.sw-menu-contents-wrap
+        li.sw-menu-contents
+          a.sw-menu-link(href='#')
+            .sw-menu-contents-title-wrap
+              h2.sw-menu-contents-title projects
+              .sw-menu-contents-line
+                span.sw-line
+            p.sw-menu-contents-description Take a look at what     
+              br
+              | we’ve done.
+
+        li.sw-menu-contents
+          a.sw-menu-link(href='#')
+            .sw-menu-contents-title-wrap
+              h2.sw-menu-contents-title contact
+              .sw-menu-contents-line
+                span.sw-line
+            p.sw-menu-contents-description Have a project you’d 
+              br
+              | like to talk to us
+
     p #{data.siteWide.title}
