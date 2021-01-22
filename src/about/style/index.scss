@@ -53,7 +53,7 @@ body {
 
     @include fontvw($fontSize);
 
-    left: getvw(42);
+    left: getvw(40);
     letter-spacing: 0.08em;
     line-height: ($lineHeight / $fontSize);
   }
@@ -73,4 +73,54 @@ body {
 
 .about-self-wrap {
   width: 100%;
+}
+
+.about-self-inner {
+  width: 100%;
+  padding: 170px 0 170px percentage(165 / $X_LARGE_SCREEN_WIDTH);
+  background-color: #fff;
+
+  @include largeScreenWidthLess() { 
+    padding: getvw(93) getvw(40) getvw(107);
+  }
+}
+
+.about-self-title {
+  $fontSize: 40;
+  $lineHeight: 50;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: $COLOR_TEXT_PRIMARY;
+  margin-bottom: 65px;
+
+  @include largeScreenWidthLess() {
+    $fontSize: 18;
+    $lineHeight: 40;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+    margin-bottom: getvw(50);
+  }
+}
+
+.about-self-description {
+  $fontSize: 20;
+  $lineHeight: 50;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: $COLOR_TEXT_PRIMARY;
+  letter-spacing: 0.08em;
+
+  @include largeScreenWidthLess() {
+    $fontSize: 14;
+    $lineHeight: 40;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+    margin-bottom: getvw(50);
+  }
 }
