@@ -1,0 +1,17 @@
+extends /shared/templates/layout/_default
+
+block vars
+  -
+    var title = 'document'
+    var bgColor = ''
+
+block main
+  .about-wrap
+    include /about/template/sections/_kv
+    include /about/template/sections/_self
+
+    .about-menu-wrap
+      include /shared/templates/module/_menu
+      +menu(data.about.menu)
+
+    include /shared/templates/module/_heading

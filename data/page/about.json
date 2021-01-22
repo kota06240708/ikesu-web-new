@@ -1,0 +1,28 @@
+{
+  "about": {
+    "menu": [
+      {
+        "title": "what we can",
+        "description": "",
+        "link": "#"
+      },
+      {
+        "title": "contact",
+        "description": "",
+        "link": "#"
+      }
+    ],
+    "contactMenu": [
+      {
+        "title": "projects",
+        "description": "",
+        "link": "#"
+      },
+      {
+        "title": "contact",
+        "description": "",
+        "link": "#"
+      }
+    ]
+  }
+}

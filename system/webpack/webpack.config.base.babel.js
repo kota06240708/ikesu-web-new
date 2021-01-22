@@ -1,9 +1,11 @@
 import conf from '../config';
 import glob from 'glob';
 
-const { SRC, INDEX, EXTENSION_JS, EXTENSION_TSX } = conf;
+const { SRC, EXTENSION_JS, EXTENSION_TSX } = conf;
 
-const entries = {};
+const path = 'script/index.js';
+
+const entries = {[path]: []};
 
 const defaultStatsOptions = {
   colors: {
@@ -28,29 +30,18 @@ const defaultStatsOptions = {
 };
 
 
+glob.sync(`./${SRC}/**/index${EXTENSION_JS}`, {}).forEach(file => entries[path].push(file));
 
-glob.sync(`./${SRC}/**/index${EXTENSION_JS}`, {}).forEach(file => {
-  const regEx = new RegExp(`./${SRC}/`);
-  // `./src/`の文字列を取り除く
-  const key = file
-    .replace(regEx, '')
-    .replace('.ts', '.js')
-    .replace(`${INDEX}/`, '');
+glob.sync(`./${SRC}/**/index${EXTENSION_TSX}`, {}).forEach((file, i) => {
+  if (process.env.NODE_ENV !== 'production' && i === 0) {
+    entries[path] = [
+      ...entries[path],
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client'
+    ]
+  }
 
-  return (entries[key] = file);
-});
-
-glob.sync(`./${SRC}/**/index${EXTENSION_TSX}`, {}).forEach(file => {
-  const regEx = new RegExp(`./src/`);
-  const key = file
-    .replace(regEx, '')
-    .replace('.tsx', '.js')
-    .replace(`${INDEX}/`, '');
-
-  entries[key] =
-    process.env.NODE_ENV !== 'production'
-      ? [file, 'webpack/hot/dev-server', 'webpack-hot-middleware/client']
-      : file;
+  entries[path].push(file);
 });
 
 export default {

@@ -12,7 +12,6 @@ body {
     "Hiragino Sans",
     Meiryo,
     sans-serif;
-  background-color: $COLOR_BG_PRIMARY;
 }
 
 h1,
@@ -23,9 +22,17 @@ h5,
 h6 {
   font-size: 100%;
 }
-
+s
 li {
   list-style: none;
+}
+
+.sw-body {
+  background-color: $COLOR_BG_PRIMARY;
+
+  &.black {
+    background-color: #000;
+  }
 }
 
 // ==============================================
@@ -332,6 +339,7 @@ $logoWidth: 40;
 .sw-menu-contents {
   margin-right: 120px;
   white-space: nowrap;
+  list-style: none;
 
   &:last-child {
     margin-right: 0;

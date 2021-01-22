@@ -1,20 +1,23 @@
 @import '../../shared/styles/import';
 @import '../../shared/icons/css/icons';
 
-@import '../../about/style/index';
-
 
 body {
   background-color: $COLOR_BG_PRIMARY;
 }
 
-.top-wrap {
+.about-wrap {
   width: 100%;
   height: 100vh;
   position: relative;
 }
 
-.top-kv-wrap {
+
+// ==================================
+// KV
+// ==================================
+
+.about-kv-wrap {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -24,41 +27,50 @@ body {
   }
 }
 
-.top-menu-wrap {
+.about-menu-wrap {
   @include largeScreenWidthLess() {
-    padding: getvw(50) getvw(30) getvw(200);
+    display: none;
   }
 }
 
-.top-kv-title {
-  $fontSize: 30;
+.about-kv-title {
+  $fontSize: 40;
   $lineHeight: 50;
 
   font-size: $fontSize + px;
-  letter-spacing: 0.7em;
+  letter-spacing: 0.065em;
   font-weight: 700;
   line-height: ($lineHeight / $fontSize);
-  color: #000;
-  text-transform: uppercase;
+  color: $COLOR_TEXT_PRIMARY;
   position: absolute;
   top: 50%;
   left: percentage(200 / $X_LARGE_SCREEN_WIDTH);
   transform: translateY(-50%);
 
   @include largeScreenWidthLess() {
-    $fontSize: 23;
+    $fontSize: 18;
+    $lineHeight: 40;
 
     @include fontvw($fontSize);
 
     left: getvw(42);
+    letter-spacing: 0.08em;
     line-height: ($lineHeight / $fontSize);
   }
 }
 
-.top-newline {
+.about-newline {
   display: none;
 
   @include largeScreenWidthLess() {
     display: block;
   }
+}
+
+// ==================================
+// SELF
+// ==================================
+
+.about-self-wrap {
+  width: 100%;
 }
