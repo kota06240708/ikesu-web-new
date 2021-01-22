@@ -1,10 +1,10 @@
 /* 画像サイズによってフォントサイズを変える */
-@function getVw($size: 10, $viewport: $X_LARGE_SCREEN_WIDTH) {
+@function getvw($size: 10, $viewport: $SMALL_SCREEN_WIDTH) {
   @return $size / $viewport * 100vw;
 }
 
 /* 画像サイズによってフォントサイズを変える */
-@mixin fontVw($fontSize: 10, $viewport: $X_LARGE_SCREEN_WIDTH) {
+@mixin fontvw($fontSize: 10, $viewport: $SMALL_SCREEN_WIDTH) {
   font-size: $fontSize * 1px;
   font-size: $fontSize / $viewport * 100vw;
 }

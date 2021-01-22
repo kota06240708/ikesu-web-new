@@ -33,6 +33,8 @@ li {
 // ==============================================
 
 .sw-logo-wrap {
+  width: 100%;
+  height: 100%;
   display: block;
 
   &.open {
@@ -101,6 +103,12 @@ $logoWidth: 40;
   background-color: #fff;
   height: 100vh;
   z-index: $Z_INDEX_HEADING;
+
+  @include largeScreenWidthLess() {
+    width: 100%;
+    height: getvw(80);
+    position: static;
+  }
 }
 
 .sw-heading-inner {
@@ -122,6 +130,10 @@ $logoWidth: 40;
   transform: translate(-50%, -50%) rotate(90deg);
   white-space: nowrap;
   text-decoration: none;
+
+  @include largeScreenWidthLess() {
+    transform: translate(-50%, -50%)
+  }
 }
 
 .sw-Heading-line {
@@ -132,6 +144,10 @@ $logoWidth: 40;
   background-color: $COLOR_LINE_PRIMARY;
   transform: translate(-50%, -50%);
   z-index: 0;
+
+  @include largeScreenWidthLess() {
+    width: getvw(300);
+  }
 }
 
 .sw-heading-text {
@@ -146,6 +162,12 @@ $logoWidth: 40;
   background-color: #fff;
   position: relative;
   z-index: 1;
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+
+    padding: 0 getvw(25);
+  }
 }
 
 // ==============================================
@@ -170,6 +192,12 @@ $logoWidth: 40;
     transform-origin: right;
     transform: rotate(25deg);
   }
+
+  @include largeScreenWidthLess() {
+    &::before {
+      width: getvw(20);
+    }
+  }
 }
 
 // ==============================================
@@ -190,10 +218,19 @@ $logoWidth: 40;
   align-items: center;
   padding: 0 30px;
   justify-content: space-between;
+
+  @include largeScreenWidthLess() {
+    padding: 0 getvw(30);
+  }
 }
 
 .sw-header-link {
+  width: 40px;
   display: block;
+
+  @include largeScreenWidthLess() {
+    width: getvw(40);
+  }
 }
 
 .sw-header-toggle-wrap {
@@ -222,6 +259,12 @@ $logoWidth: 40;
       background-color: #fff;
     }
   }
+
+  @include largeScreenWidthLess() {
+    width: getvw(120);
+    height: getvw(100);
+    margin-right: getvw(-15);
+  }
 }
 
 .sw-header-toggle-contents {
@@ -240,7 +283,19 @@ $logoWidth: 40;
   }
 
   &:nth-child(2) {
-    top: calc(50% - 8px);
+    top: calc(50% - 6px);
+  }
+
+  @include largeScreenWidthLess() {
+    width: getvw(85);
+    
+    &:nth-child(1) {
+      top: calc(50% + #{getvw(6)});
+    }
+  
+    &:nth-child(2) {
+      top: calc(50% - #{getvw(6)});
+    }
   }
 }
 
@@ -259,11 +314,19 @@ $logoWidth: 40;
 .sw-menu-wrap {
   position: absolute;
   right: percentage(105 / $X_LARGE_SCREEN_WIDTH);
-  bottom: percentage(42 / $X_LARGE_SCREEN_WIDTH);
+  bottom: percentage(42 / $X_LARGE_SCREEN_HEIGHT);
+
+  @include largeScreenWidthLess() {
+    position: static;
+  }
 }
 
 .sw-menu-contents-wrap {
   display: flex;
+
+  @include largeScreenWidthLess() {
+    display: block;
+  }
 }
 
 .sw-menu-contents {
@@ -273,11 +336,23 @@ $logoWidth: 40;
   &:last-child {
     margin-right: 0;
   }
+
+  @include largeScreenWidthLess() {
+    margin: 0 0 getvw(80) 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
 }
 
 .sw-menu-contents-title-wrap {
   position: relative;
   margin-bottom: 16px;
+
+  @include largeScreenWidthLess() {
+    margin-bottom: getvw(16);
+  }
 }
 
 .sw-menu-contents-title {
@@ -295,6 +370,12 @@ $logoWidth: 40;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+
+    padding-right: getvw(6);
+  }
 }
 
 .sw-menu-contents-line {
@@ -303,6 +384,11 @@ $logoWidth: 40;
   bottom: 2px;
   left: 0;
   z-index: 0;
+
+  @include largeScreenWidthLess() {
+    width: getvw(173);
+    bottom: getvw(2);
+  }
 }
 
 .sw-menu-contents-description {
@@ -317,6 +403,15 @@ $logoWidth: 40;
   &.hidden {
     min-width: 170px;
     min-height: 38px;
+  }
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+
+    &.hidden {
+      min-width: inherit;
+      min-height: inherit;
+    }
   }
 }
 
@@ -335,6 +430,7 @@ $logoWidth: 40;
   position: fixed;
   z-index: $Z_INDEX_NAV;
   pointer-events: none;
+  // background-color: #000;
 
   // アニメーションを入れるときに外す
   display: none;
@@ -347,6 +443,10 @@ $logoWidth: 40;
 .sw-nav-inner {
   width: 100%;
   padding-top:  120px;
+
+  @include largeScreenWidthLess() {
+    padding-top:  getvw(120);
+  }
 }
 
 .sw-nav-list {
@@ -388,6 +488,10 @@ $logoWidth: 40;
       transform: scaleX(1);
     }
   }
+
+  @include largeScreenWidthLess() {
+    padding: getvw(20) 0 getvw(20) getvw(50);
+  }
 }
 
 .sw-nav-text {
@@ -401,4 +505,12 @@ $logoWidth: 40;
   transition: color 0.4s ease;
   position: relative;
   z-index: 1;
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+  }
 }
+
+// ==============================================
+// SVG
+// ==============================================

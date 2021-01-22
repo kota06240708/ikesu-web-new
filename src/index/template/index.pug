@@ -6,7 +6,17 @@ block vars
 
 block main
   .top-wrap
-    include /shared/templates/module/_heading
+    .top-kv-wrap
+      h2.top-kv-title the 
+        br.top-newline
+        |creative
+        br
+        |hacker 
+        br.top-newline
+        |collective
 
-    include /shared/templates/module/_menu
-    +menu(data.top.menu)
+    .top-menu-wrap
+      include /shared/templates/module/_menu
+      +menu(data.top.menu)
+
+    include /shared/templates/module/_heading
