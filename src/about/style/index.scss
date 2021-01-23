@@ -222,3 +222,216 @@ body {
     display: none;
   }
 }
+
+// ==================================
+// MEMBER
+// ==================================
+
+.about-member-wrap {
+  width: 100%;
+}
+
+.about-member-inner {
+  width: 100%;
+  padding: 170px percentage(180 / $X_LARGE_SCREEN_WIDTH) 215px percentage(220 / $X_LARGE_SCREEN_WIDTH);
+
+  @include largeScreenWidthLess() { 
+    padding: getvw(93) getvw(40) getvw(107);
+  }
+}
+
+.about-member-title {
+  margin-bottom: 75px;
+
+  @include largeScreenWidthLess() { 
+    margin-bottom: getvw(50);
+  }
+}
+
+.about-member-contents {
+  width: 100%;
+  margin-bottom: 270px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include largeScreenWidthLess() { 
+    margin-bottom: getvw(80);
+  }
+}
+
+.about-member-contents-inner {
+  display: flex;
+
+  @include largeScreenWidthLess() { 
+    display: block;
+  }
+}
+
+.about-member-master-heading-wrap {
+  min-width: 170px;
+  margin: 0 70px 0 0;
+
+  @include largeScreenWidthLess() { 
+    display: flex;
+    margin: 0 0 getvw(25) 0;
+  }
+}
+
+.about-member-master-image-wrap {
+  margin-bottom: 20px;
+
+  @include largeScreenWidthLess() { 
+    width: getvw(95);
+    margin: 0 getvw(18) 0 0;
+  }
+}
+
+.about-member-master-image {
+  width: 100%;
+  display: block;
+}
+
+.about-member-master-image-text {
+  $fontSize: 16;
+  $lineHeight: 25;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: #838383;
+  white-space: nowrap;
+
+  @include largeScreenWidthLess() { 
+    @include fontvw($fontSize);
+  }
+}
+
+.about-member-master-heading-description {
+  $fontSize: 14;
+  $lineHeight: 25;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: #838383;
+
+  @include largeScreenWidthLess() { 
+    @include fontvw($fontSize);
+  }
+}
+
+.about-member-list-wrap {
+  width: calc(100% + #{getvw(40, $X_LARGE_SCREEN_WIDTH)});
+  display: flex;
+  flex-wrap: wrap;
+  margin: getvw(-20, $X_LARGE_SCREEN_WIDTH);
+
+  @include largeScreenWidthLess() { 
+    width: calc(100% + #{getvw(16)});
+    margin: getvw(-8);
+  }
+}
+
+.about-member-list {
+  width: 33.33333333%;
+  padding: getvw(20, $X_LARGE_SCREEN_WIDTH);
+  list-style: none;
+
+  @include largeScreenWidthLess() { 
+    width: 50%;
+    padding: getvw(8);
+  }
+}
+
+.about-member-list-inner {
+  width: 100%;
+  padding: getvw(45, $X_LARGE_SCREEN_WIDTH) 0;
+  background-color: #fff;
+
+  @include largeScreenWidthLess() { 
+    padding: getvw(18) 0;
+  }
+}
+
+.about-member-list-image-wrap {
+  width: 100%;
+  padding: 0 getvw(60, $X_LARGE_SCREEN_WIDTH);
+
+  @include largeScreenWidthLess() { 
+    padding: 0 getvw(24);
+  }
+}
+
+.about-member-list-image-inner {
+  width: 100%;
+  margin-bottom: getvw(40, $X_LARGE_SCREEN_WIDTH);
+  position: relative;
+
+  &::before {
+    content: '';
+    padding-top: 129.1666667%;
+    display: block;
+  }
+
+  @include largeScreenWidthLess() { 
+    margin-bottom: getvw(15);
+  } 
+}
+
+.about-member-list-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.about-member-list-heading-wrap {
+  width: 100%;
+  text-align: center;
+}
+
+.about-member-list-heading-title {
+  $fontSize: 16;
+  $lineHeight: 25;
+
+  @include fontvw($fontSize, $X_LARGE_SCREEN_WIDTH);
+
+  line-height: ($lineHeight / $fontSize);
+  color: #838383;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.0001em;
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 10;
+    $lineHeight: 11;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  } 
+}
+
+.about-member-list-heading-description {
+  $fontSize: 16;
+  $lineHeight: 25;
+
+  @include fontvw($fontSize, $X_LARGE_SCREEN_WIDTH);
+
+  line-height: ($lineHeight / $fontSize);
+  color: #838383;
+  letter-spacing: 0.0001em;
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 10;
+    $lineHeight: 11;
+
+    @include fontvw($fontSize);
+    
+    line-height: ($lineHeight / $fontSize);
+  }
+}

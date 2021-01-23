@@ -1,0 +1,34 @@
+.about-member-wrap
+  .about-member-inner
+    .about-member-contents
+      .about-member-title
+        +title({title: 'founder', color: 'black'})
+      .about-member-contents-inner
+        .about-member-master-heading-wrap
+          .about-member-master-image-wrap
+            img.about-member-master-image(src='/about/image/img_example.png', alt='Hideoki Ilesu')
+
+          p.about-member-master-image-text Project Manager / Director
+            br
+            | Hideoki Ikesu
+
+        p.about-member-master-heading-description I am a director for projects such as digital marketing, inbound marketing, event management, movie creation.  All of my projects was done not only in Singapore and Japan but in Kuala Lumpur, Penang, Ho Chi Minh, Manila, Taipei. I found it very comfortable to work in a multi-cultural circumstance with people from many different countries. My ambition is that I would be one of the bridges to connect Japan with different countries by the power of design & creative.  
+          br
+          br
+          | 関西とシンガポールにて、ワンストップで幅広くデザイン制作を行う総合デザイン会社に企画営業兼ディレクターとして 従事しました。新規顧客の開拓から制作ディレクション(企業 CI 開発や基幹システム開発、 広告デザイン、映像)、マーケティング、アクセス解析など、クリエティブ分野に関して幅広い業務を担当してきました。 現在は、東京を拠点し、最新センシング技術や AI、AR、ドローンなどを活用したデジタルコミュニケーションを得意とする株式会社 イメージソースに在職し、プロジェクトマネージャー兼ディレクターを担当しております。 独自のソフトウェア、ハードウェアの開発や、空間を使ったデジタルインスタレーションなども経験し、さらなるディレクションの幅を広げております。
+
+    .about-member-contents
+      .about-member-title
+        +title({title: 'partners', color: 'black'})
+
+      ul.about-member-list-wrap
+        - for (var x = 0; x < 6; x++)
+          li.about-member-list
+            .about-member-list-inner
+              .about-member-list-image-wrap
+                .about-member-list-image-inner
+                  .about-member-list-image(style='background-image:url(/about/image/img_example.png)')
+
+              .about-member-list-heading-wrap
+                h3.about-member-list-heading-title Interaction Designer
+                p.about-member-list-heading-description Shogo Tabuchi
