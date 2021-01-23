@@ -197,7 +197,7 @@ $logoWidth: 40;
     right: 0;
     top: 0;
     transform-origin: right;
-    transform: rotate(25deg);
+    transform: rotate(20deg);
   }
 
   @include largeScreenWidthLess() {
@@ -355,7 +355,8 @@ $logoWidth: 40;
 }
 
 .sw-menu-contents-title-wrap {
-  position: relative;
+  display: flex;
+  align-items: flex-end;
   margin-bottom: 16px;
 
   @include largeScreenWidthLess() {
@@ -368,13 +369,12 @@ $logoWidth: 40;
   $lineHeight: 19;
 
   font-size: $fontSize + px;
-  line-height: ($lineHeight / $fontSize);
+  line-height: 0.8;
   color: $COLOR_TEXT_SECONDARY;
   letter-spacing: 0.12em;
   font-weight: 700;
   display: inline-block;
   padding-right: 6px;
-  background-color: $COLOR_BG_PRIMARY;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
@@ -387,15 +387,11 @@ $logoWidth: 40;
 }
 
 .sw-menu-contents-line {
-  width: 173px;
-  position: absolute;
-  bottom: 2px;
-  left: 0;
-  z-index: 0;
+  width: 62px;
+
 
   @include largeScreenWidthLess() {
-    width: getvw(173);
-    bottom: getvw(2);
+    width: getvw(62);
   }
 }
 
@@ -520,5 +516,46 @@ $logoWidth: 40;
 }
 
 // ==============================================
-// SVG
+// TITLE
 // ==============================================
+
+.sw-title {
+  $fontSize: 30;
+  $lineHeight: 35;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+
+  &.black {
+    color: $COLOR_TEXT_PRIMARY;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 22px;
+    width: 4px;
+    background-color: $COLOR_ACTIVE_PRIMARY;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+  }
+
+  @include largeScreenWidthLess() { 
+    @include fontvw($fontSize);
+
+    &::before {
+      height: getvw(22);
+      width: getvw(4);
+      background-color: $COLOR_ACTIVE_PRIMARY;
+      top: 50%;
+      left: getvw(-10);
+      transform: translateY(-50%);
+    }
+  }
+}

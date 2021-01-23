@@ -23,6 +23,32 @@
         "description": "",
         "link": "#"
       }
+    ],
+    "can": [
+      {
+        "title": "Web Design / Development",
+        "description": "企画・立案 / UI・UXデザイン / 構築 / 運用 / 保守"
+      },
+      {
+        "title": "Movie Video Production",
+        "description": "企画・立案 / 撮影 / 編集 / DVD"
+      },
+      {
+        "title": "Apps Development",
+        "description": "企画・立案 / デザイン / システム開発 / 運用 / 保守"
+      },
+      {
+        "title": "Digital Installation",
+        "description": "企画・立案 / 空間デザイン / ハードウェア開発"
+      },
+      {
+        "title": "Graphic Design",
+        "description": "ロゴ / ポスター/ POP / パッケージデザイン"
+      },
+      {
+        "title": "R&D",
+        "description": "商品開発 / 作品展示"
+      }
     ]
   }
 }

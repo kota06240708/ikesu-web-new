@@ -77,7 +77,7 @@ body {
 
 .about-self-inner {
   width: 100%;
-  padding: 170px 0 170px percentage(165 / $X_LARGE_SCREEN_WIDTH);
+  padding: 170px 0 170px percentage(220 / $X_LARGE_SCREEN_WIDTH);
   background-color: #fff;
 
   @include largeScreenWidthLess() { 
@@ -122,5 +122,103 @@ body {
 
     line-height: ($lineHeight / $fontSize);
     margin-bottom: getvw(50);
+  }
+}
+
+// ==================================
+// CAN
+// ==================================
+
+.about-can-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.about-can-inner {
+  width: 100%;
+  padding: 170px 0 215px percentage(220 / $X_LARGE_SCREEN_WIDTH);
+  background-color: #4e4e4e;
+
+  @include largeScreenWidthLess() { 
+    padding: getvw(93) getvw(40) getvw(107);
+  }
+}
+
+.about-can-title {
+  margin-bottom: 95px;
+
+  @include largeScreenWidthLess() { 
+    margin-bottom: getvw(55);
+  }
+}
+
+.about-can-list-wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -34px 0;
+
+  @include largeScreenWidthLess() { 
+    margin: 0;
+    display: block;
+  }
+}
+
+.about-can-list {
+  width: 50%;
+  list-style: none;
+  color: $COLOR_TEXT_CONTENTS;
+  padding: 34px 0;
+
+  @include largeScreenWidthLess() { 
+    width: 100%;
+    padding: 0;
+    margin-bottom: 40px;
+    display: block;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.about-can-list-title {
+  $fontSize: 20;
+  $lineHeight: 30;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  margin-bottom: 10px;
+
+  @include largeScreenWidthLess() { 
+    @include fontvw($fontSize);
+
+    margin-bottom: getvw(10);
+  }
+}
+
+.about-can-list-text {
+  $fontSize: 14;
+  $lineHeight: 30;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+
+  @include largeScreenWidthLess() { 
+    @include fontvw($fontSize);
+
+    white-space: nowrap;
+  }
+}
+
+.about-can-menu {
+  width: 100%;
+}
+
+.about-can-menu--pc {
+  display: block;
+
+  @include largeScreenWidthLess() { 
+    display: none;
   }
 }

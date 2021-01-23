@@ -6,12 +6,16 @@ block vars
     var bgColor = ''
 
 block main
+  //- mixin
+  include /shared/templates/module/_title
+  include /shared/templates/module/_menu
+
   .about-wrap
     include /about/template/sections/_kv
     include /about/template/sections/_self
+    include /about/template/sections/_can
 
     .about-menu-wrap
-      include /shared/templates/module/_menu
       +menu(data.about.menu)
 
     include /shared/templates/module/_heading
