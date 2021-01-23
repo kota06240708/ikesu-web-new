@@ -1,0 +1,109 @@
+@import '../../../shared/styles/import';
+
+.all-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.all-inner {
+  width: 100%;
+  padding: 115px 145px 360px;
+}
+
+.all-heading {
+  width: 100%;
+  margin-bottom: 142px;
+}
+
+.all-heading-title {
+  margin-bottom: 34px;
+}
+
+.all-heading-description {
+  $fontSize: 17;
+  $lineHeight: 35;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: $COLOR_TEXT_PRIMARY;
+  letter-spacing: 0.03em;
+}
+
+.all-menu-pc {
+  display: block;
+
+  @include largeScreenWidthLess() {
+    display: none;
+  }
+}
+
+.all-contents-wrap {
+  width: calc(100% + 30px);
+  display: flex;
+  flex-wrap: wrap;
+  margin: -30px;
+}
+
+.all-contents-link {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+}
+
+.all-contents {
+  width: 33.333333%;
+  padding: 30px;
+  list-style: none;
+}
+
+.all-contents-image-wrap {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
+
+  &::before {
+    content: '';
+    padding-top: 66.666666667%;
+    display: block;
+  }
+}
+
+.all-contents-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.all-contents-label-wrap {
+  $fontSize: 12;
+  $lineHeight: 14;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  color: #909090;
+  width: 100%;
+  display: flex;
+}
+
+.all-contents-label-number {
+  white-space: nowrap;
+  margin-right: 8px;
+}
+
+.all-contents-text {
+  $fontSize: 20;
+  $lineHeight: 25;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  letter-spacing: 0.065em;
+  color: $COLOR_TEXT_PRIMARY;
+  font-weight: 400;
+}

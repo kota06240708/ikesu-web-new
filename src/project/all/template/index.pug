@@ -1,0 +1,41 @@
+extends /shared/templates/layout/_default
+
+block vars
+  -
+    var title = 'document'
+    var bgColor = 'white'
+
+block main
+  //- mixin
+  include /shared/templates/module/_heading
+  include /shared/templates/module/_title
+  include /shared/templates/module/_menu
+
+  .all-wrap
+
+    .all-inner
+      .all-heading
+        .all-heading-title
+          +title({title: 'ALL CREATIVE PROJECTS', color: 'black'})
+
+        p.all-heading-description I have been involved in digital installation, hardware development, AR,
+          br
+          |  Web development, AI and so on as a project manger.
+
+      ul.all-contents-wrap
+        - for (var x = 0; x < 6; x++)
+          li.all-contents
+            a.all-contents-link(href='#')
+              .all-contents-image-wrap
+                .all-contents-image(style='background-image:url(/image/img_example_02.png)')
+
+              .all-contents-label-wrap
+                span.all-contents-label-number 01 -
+                p.all-contents-label AR / PROJECT MANAGEMENT & DIRECTION
+
+              h3.all-contents-text PROJECT NAME
+    
+    .all-menu-pc
+      +menu(data.project.all)
+
+    +heading({title: 'Work With Us', link: '#'})
