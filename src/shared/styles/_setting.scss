@@ -110,6 +110,11 @@ $logoWidth: 40;
   background-color: #fff;
   height: 100vh;
   z-index: $Z_INDEX_HEADING;
+  border-bottom: solid 1px $COLOR_LINE_PRIMARY;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 
   @include largeScreenWidthLess() {
     width: 100%;

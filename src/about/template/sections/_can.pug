@@ -9,5 +9,9 @@
           h2.about-can-list-title #{item.title}
           p.about-can-list-text #{item.description}
 
-  .about-can-menu.about-can-menu--pc
+  .about-menu--pc
     +menu(data.about.contactMenu)
+
+  .about-menu--sp
+    +heading({title: data.about.contactMenu[0].title, link: data.about.contactMenu[0].link})
+    +heading({title: data.about.contactMenu[1].title, link: data.about.contactMenu[1].link})

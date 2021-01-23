@@ -12,6 +12,30 @@ body {
   position: relative;
 }
 
+.about-newline {
+  display: none;
+
+  @include largeScreenWidthLess() {
+    display: block;
+  }
+}
+
+.about-menu--pc {
+  display: block;
+
+  @include largeScreenWidthLess() {
+    display: none;
+  }
+}
+
+.about-menu--sp {
+  display: none;
+
+  @include largeScreenWidthLess() {
+    display: block;
+  }
+}
+
 
 // ==================================
 // KV
@@ -56,14 +80,6 @@ body {
     left: getvw(40);
     letter-spacing: 0.08em;
     line-height: ($lineHeight / $fontSize);
-  }
-}
-
-.about-newline {
-  display: none;
-
-  @include largeScreenWidthLess() {
-    display: block;
   }
 }
 
@@ -220,6 +236,14 @@ body {
 
   @include largeScreenWidthLess() { 
     display: none;
+  }
+}
+
+.about-can-menu--sp {
+  display: none;
+
+  @include largeScreenWidthLess() { 
+    display: block;
   }
 }
 
@@ -434,4 +458,48 @@ body {
     
     line-height: ($lineHeight / $fontSize);
   }
+}
+
+// ==================================
+// CONTACT
+// ==================================
+
+.about-contact-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.about-contact-inner {
+  width: 100%;
+  padding: 170px 0 215px percentage(220 / $X_LARGE_SCREEN_WIDTH);
+  background-color: #fff;
+
+  @include largeScreenWidthLess() { 
+    background-color: $COLOR_BG_PRIMARY;
+    padding: getvw(93) getvw(40) getvw(107);
+  }
+}
+
+.about-contact-title {
+  margin-bottom: 40px;
+}
+
+.about-contact-description {
+  $fontSize: 17;
+  $lineHeight: 35;
+
+  font-size: $fontSize + px;
+  letter-spacing: 0.03em;
+  line-height: ($lineHeight / $fontSize);
+  color: $COLOR_TEXT_PRIMARY;
+  font-weight: 400;
+}
+
+.about-contact-link {
+  $fontSize: 13;
+  $lineHeight: 35;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: rgba(#000, 0.5);
 }

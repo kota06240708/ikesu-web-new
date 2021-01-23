@@ -9,14 +9,17 @@ block main
   //- mixin
   include /shared/templates/module/_title
   include /shared/templates/module/_menu
+  include /shared/templates/module/_heading
 
   .about-wrap
     include /about/template/sections/_kv
     include /about/template/sections/_self
     include /about/template/sections/_can
     include /about/template/sections/_member
+    include /about/template/sections/_contact
 
     .about-menu-wrap
       +menu(data.about.menu)
 
-    include /shared/templates/module/_heading
+    .about-menu--pc
+      +heading({title: 'Who We Are', link: '#'})

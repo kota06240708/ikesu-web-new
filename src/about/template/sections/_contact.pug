@@ -1,0 +1,19 @@
+.about-contact-wrap
+  .about-contact-inner
+    .about-contact-title
+      +title({title: 'contact', color: 'black'})
+
+    .about-contact-contents
+      h3.about-contact-description Have a project you’d like to talk to us about? 
+        br
+        | Contact us at: 
+
+      a.about-contact-link(href="mailto:ikesu@89-studio.com") ikesu@89-studio.com
+
+
+  .about-menu--pc
+    +menu(data.about.contactMenu)
+
+  .about-menu--sp
+    +heading({title: data.about.contactMenu[0].title, link: data.about.contactMenu[0].link})
+    +heading({title: data.about.contactMenu[1].title, link: data.about.contactMenu[1].link})

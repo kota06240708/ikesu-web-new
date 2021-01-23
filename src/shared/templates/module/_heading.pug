@@ -1,7 +1,8 @@
-.sw-heading-wrap
-  .sw-heading-inner
-    a.sw-heading-text-wrap(href='#') 
-      .sw-heading-text Who We Are
+mixin heading({title, link})
+  .sw-heading-wrap
+    .sw-heading-inner
+      a.sw-heading-text-wrap(href=link) 
+        .sw-heading-text #{title}
 
-      .sw-Heading-line
-        .sw-line
+        .sw-Heading-line
+          .sw-line

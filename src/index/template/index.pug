@@ -6,6 +6,8 @@ block vars
     var bgColor = ''
 
 block main
+  include /shared/templates/module/_heading
+
   .top-wrap
     .top-kv-wrap
       h2.top-kv-title the 
@@ -20,4 +22,4 @@ block main
       include /shared/templates/module/_menu
       +menu(data.top.menu)
 
-    include /shared/templates/module/_heading
+    +heading({title: 'Who We Are', link: '#'})
