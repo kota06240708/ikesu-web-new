@@ -7,7 +7,7 @@
 
 .all-inner {
   width: 100%;
-  padding: 115px percentage(120 / $X_LARGE_SCREEN_HEIGHT) 360px;
+  padding: 115px percentage(140 / $X_LARGE_SCREEN_WIDTH) 360px;
 
   @include largeScreenWidthLess() {
     padding: getvw(120) getvw(40);
@@ -59,10 +59,10 @@
 }
 
 .all-contents-wrap {
-  width: calc(100% + #{getvw(30, $X_LARGE_SCREEN_HEIGHT)});
+  width: calc(100% + #{getvw(60, $X_LARGE_SCREEN_WIDTH)});
   display: flex;
   flex-wrap: wrap;
-  margin: getvw(-15, $X_LARGE_SCREEN_HEIGHT);
+  margin: getvw(-30, $X_LARGE_SCREEN_WIDTH);
 
   @include largeScreenWidthLess() {
     width: 100%;
@@ -79,7 +79,7 @@
 
 .all-contents {
   width: 33.333333%;
-  padding: getvw(15, $X_LARGE_SCREEN_HEIGHT);
+  padding: getvw(30, $X_LARGE_SCREEN_WIDTH);
   list-style: none;
 
   @include largeScreenWidthLess() {
@@ -97,7 +97,7 @@
 .all-contents-image-wrap {
   width: 100%;
   position: relative;
-  margin-bottom: getvw(10, $X_LARGE_SCREEN_HEIGHT);
+  margin-bottom: getvw(10, $X_LARGE_SCREEN_WIDTH);
 
   &::before {
     content: '';
@@ -122,10 +122,10 @@
 }
 
 .all-contents-label-wrap {
-  $fontSize: 10;
-  $lineHeight: 12;
+  $fontSize: 12;
+  $lineHeight: 14;
 
-  @include fontvw($fontSize, $X_LARGE_SCREEN_HEIGHT);
+  @include fontvw($fontSize, $X_LARGE_SCREEN_WIDTH);
   
   line-height: ($lineHeight / $fontSize);
   letter-spacing: 0.12em;
@@ -144,7 +144,7 @@
 
 .all-contents-label-number {
   white-space: nowrap;
-  margin-right: getvw(8, $X_LARGE_SCREEN_HEIGHT);
+  margin-right: getvw(8, $X_LARGE_SCREEN_WIDTH);
   word-wrap: break-word;
 
   @include largeScreenWidthLess() {
@@ -153,10 +153,10 @@
 }
 
 .all-contents-text {
-  $fontSize: 16;
-  $lineHeight: 21;
+  $fontSize: 20;
+  $lineHeight: 25;
 
-  @include fontvw($fontSize, $X_LARGE_SCREEN_HEIGHT);
+  @include fontvw($fontSize, $X_LARGE_SCREEN_WIDTH);
 
   line-height: ($lineHeight / $fontSize);
   letter-spacing: 0.065em;
