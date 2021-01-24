@@ -567,7 +567,7 @@ $logoWidth: 40;
     @include fontvw($fontSize);
 
     &::before {
-      height: calc(100% - #{getvw(20)});
+      height: calc(100% - #{getvw(12)});
       width: getvw(4);
       background-color: $COLOR_ACTIVE_PRIMARY;
       top: 50%;
