@@ -12,3 +12,21 @@ block main
   .project-wrap
   
     +heading({title: 'All Projects', link: '#'})
+    
+    .project-bg-wrap
+      .project-bg-inner
+        .project-bg(style='background-image:url(/image/img_example_bg.png)')
+
+    .project-inner
+      ul.project-contents-wrap
+        - for (var x = 0; x < 9; x++)
+          li.project-contents
+            a.project-contents-link(href='#')
+              .project-contents-heading
+                .project-contents-label-wrap
+                  span.project-contents-label-number 01 -
+                  p.project-contents-label INSTALLATION
+
+                p.project-contents-heading-text / PROJECT MANAGEMENT & DIRECTION
+
+              h2.project-contents-name PROJECT NAME
