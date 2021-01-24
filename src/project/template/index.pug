@@ -3,23 +3,12 @@ extends /shared/templates/layout/_default
 block vars
   -
     var title = 'document'
-    var bgColor = ''
+    var bgColor = 'black'
+    var headerColor = 'white'
 
 block main
   include /shared/templates/module/_heading
 
-  .top-wrap
-    .top-kv-wrap
-      h2.top-kv-title the 
-        br.top-newline
-        |creative
-        br
-        |hacker 
-        br.top-newline
-        |collective
-
-    .top-menu-wrap
-      include /shared/templates/module/_menu
-      +menu(data.top.menu)
-
-    +heading({title: 'Who We Are', link: '#'})
+  .project-wrap
+  
+    +heading({title: 'All Projects', link: '#'})

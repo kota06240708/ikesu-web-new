@@ -1,20 +1,21 @@
-div
+mixin header({color})
+  div
 
-  header.sw-header-wrap
-    .sw-header-inner
-      a.sw-header-link(href='/')
-        include /shared/templates/module/_logo
+    header.sw-header-wrap
+      #js-header-wrap.sw-header-inner(class=`${color ? color : ''}`)
+        a.sw-header-link(href='/')
+          include /shared/templates/module/_logo
 
-      #js-toggle-wrap.sw-header-toggle-wrap
-        .sw-header-toggle-contents
-          span.sw-header-toggle
-        .sw-header-toggle-contents
-          span.sw-header-toggle
+        #js-toggle-wrap.sw-header-toggle-wrap
+          .sw-header-toggle-contents
+            span.sw-header-toggle
+          .sw-header-toggle-contents
+            span.sw-header-toggle
 
-  .sw-nav-wrap
-    .sw-nav-inner
-      ul.sw-nav-list-wrap
-        each item in data.siteWide.link
-          li.sw-nav-list
-            a.sw-nav-link(href=item.link)
-              p.sw-nav-text #{item.title}
+    #js-nav-wrap.sw-nav-wrap
+      .sw-nav-inner
+        ul.sw-nav-list-wrap
+          each item in data.siteWide.link
+            li.sw-nav-list
+              a.sw-nav-link(href=item.link)
+                p.sw-nav-text #{item.title}

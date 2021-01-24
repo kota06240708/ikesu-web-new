@@ -47,12 +47,6 @@ li {
   width: 100%;
   height: 100%;
   display: block;
-
-  &.open {
-    .sw-logo-path {
-      fill: #afafaf;
-    }
-  }
 }
 
 .sw-logo-path {
@@ -238,22 +232,6 @@ $logoWidth: 40;
   @include largeScreenWidthLess() {
     padding: 0 getvw(30);
   }
-}
-
-.sw-header-link {
-  width: 40px;
-  display: block;
-
-  @include largeScreenWidthLess() {
-    width: getvw(40);
-  }
-}
-
-.sw-header-toggle-wrap {
-  width: 120px;
-  height: 100px;
-  position: relative;
-  cursor: pointer;
 
   &.open {
     .sw-header-toggle-contents {
@@ -274,7 +252,37 @@ $logoWidth: 40;
     .sw-header-toggle {
       background-color: #fff;
     }
+
+    .sw-logo-path {
+      fill: #afafaf;
+    }
   }
+
+  &.white {
+    .sw-header-toggle {
+      background-color: #fff;
+    }
+
+    .sw-logo-path {
+      fill: #afafaf;
+    }
+  }
+}
+
+.sw-header-link {
+  width: 40px;
+  display: block;
+
+  @include largeScreenWidthLess() {
+    width: getvw(40);
+  }
+}
+
+.sw-header-toggle-wrap {
+  width: 120px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
 
   @include largeScreenWidthLess() {
     width: getvw(120);
