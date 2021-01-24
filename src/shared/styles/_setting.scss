@@ -547,7 +547,7 @@ $logoWidth: 40;
   &::before {
     content: '';
     position: absolute;
-    height: 22px;
+    height: calc(100% - 15px);
     width: 4px;
     background-color: $COLOR_ACTIVE_PRIMARY;
     top: 50%;
@@ -559,7 +559,7 @@ $logoWidth: 40;
     @include fontvw($fontSize);
 
     &::before {
-      height: getvw(22);
+      height: calc(100% - #{getvw(20)});
       width: getvw(4);
       background-color: $COLOR_ACTIVE_PRIMARY;
       top: 50%;

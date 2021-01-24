@@ -7,16 +7,28 @@
 
 .all-inner {
   width: 100%;
-  padding: 115px 145px 360px;
+  padding: 115px percentage(120 / $X_LARGE_SCREEN_HEIGHT) 360px;
+
+  @include largeScreenWidthLess() {
+    padding: getvw(120) getvw(40);
+  }
 }
 
 .all-heading {
   width: 100%;
   margin-bottom: 142px;
+
+  @include largeScreenWidthLess() {
+    margin-bottom: getvw(40);
+  }
 }
 
 .all-heading-title {
   margin-bottom: 34px;
+
+  @include largeScreenWidthLess() {
+    margin-bottom: getvw(10);
+  }
 }
 
 .all-heading-description {
@@ -27,6 +39,15 @@
   line-height: ($lineHeight / $fontSize);
   color: $COLOR_TEXT_PRIMARY;
   letter-spacing: 0.03em;
+
+  @include largeScreenWidthLess() {
+    $fontSize: 14;
+    $lineHeight: 28;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  }
 }
 
 .all-menu-pc {
@@ -38,10 +59,16 @@
 }
 
 .all-contents-wrap {
-  width: calc(100% + 30px);
+  width: calc(100% + #{getvw(30, $X_LARGE_SCREEN_HEIGHT)});
   display: flex;
   flex-wrap: wrap;
-  margin: -30px;
+  margin: getvw(-15, $X_LARGE_SCREEN_HEIGHT);
+
+  @include largeScreenWidthLess() {
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
 }
 
 .all-contents-link {
@@ -52,19 +79,34 @@
 
 .all-contents {
   width: 33.333333%;
-  padding: 30px;
+  padding: getvw(15, $X_LARGE_SCREEN_HEIGHT);
   list-style: none;
+
+  @include largeScreenWidthLess() {
+    width: 100%;
+    padding: 0;
+    margin-bottom: getvw(28);
+    display: block;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .all-contents-image-wrap {
   width: 100%;
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: getvw(10, $X_LARGE_SCREEN_HEIGHT);
 
   &::before {
     content: '';
     padding-top: 66.666666667%;
     display: block;
+  }
+
+  @include largeScreenWidthLess() {
+    margin-bottom: getvw(10);
   }
 }
 
@@ -80,30 +122,59 @@
 }
 
 .all-contents-label-wrap {
-  $fontSize: 12;
-  $lineHeight: 14;
+  $fontSize: 10;
+  $lineHeight: 12;
 
-  font-size: $fontSize + px;
+  @include fontvw($fontSize, $X_LARGE_SCREEN_HEIGHT);
+  
   line-height: ($lineHeight / $fontSize);
   letter-spacing: 0.12em;
   margin-bottom: 10px;
   color: #909090;
   width: 100%;
   display: flex;
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+    margin-bottom: getvw(4);
+  }
 }
 
 .all-contents-label-number {
   white-space: nowrap;
-  margin-right: 8px;
+  margin-right: getvw(8, $X_LARGE_SCREEN_HEIGHT);
+  word-wrap: break-word;
+
+  @include largeScreenWidthLess() {
+    margin-right: getvw(4);
+  }
 }
 
 .all-contents-text {
-  $fontSize: 20;
-  $lineHeight: 25;
+  $fontSize: 16;
+  $lineHeight: 21;
 
-  font-size: $fontSize + px;
+  @include fontvw($fontSize, $X_LARGE_SCREEN_HEIGHT);
+
   line-height: ($lineHeight / $fontSize);
   letter-spacing: 0.065em;
   color: $COLOR_TEXT_PRIMARY;
   font-weight: 400;
+  word-wrap: break-word;
+
+  @include largeScreenWidthLess() {
+    @include fontvw($fontSize);
+
+    margin-right: getvw(4);
+  }
+}
+
+.all-newline-pc {
+  display: block;
+
+  @include largeScreenWidthLess() {
+    display: none;
+  }
 }
