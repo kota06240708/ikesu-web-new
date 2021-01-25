@@ -56,6 +56,11 @@
   position: absolute;
   top: percentage(140 / $X_LARGE_SCREEN_HEIGHT);
   left: percentage(108 / $X_LARGE_SCREEN_WIDTH);
+
+  @include largeScreenWidthLess() { 
+    top: getvw(100);
+    left: getvw(40);
+  }
 }
 
 .detail-kv-heading {
@@ -123,6 +128,10 @@
   padding: 170px 40px;
   display: flex;
   justify-content: center;
+
+  @include largeScreenWidthLess() { 
+    padding: getvw(60) getvw(20);
+  }
 }
 
 .detail-heading-text {
@@ -135,18 +144,40 @@
   letter-spacing: 0.01em;
   display: inline-block;
   margin: 0 auto;
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 14;
+    $lineHeight: 21;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  }
 }
 
 .detail-video-wrap {
   width: 100%;
   max-width: 1008px;
   margin: 0 auto 300px;
+
+  @include largeScreenWidthLess() { 
+    margin: 0 auto getvw(60);
+  }
+}
+
+.detail-video-inner {
+  width: 100%;
   position: relative;
+  margin-bottom: 40px;
 
   &::before {
     content: '';
     padding-top: 59.375%;
     display: block;
+  }
+
+  @include largeScreenWidthLess() { 
+    margin-bottom: getvw(20);
   }
 }
 
@@ -156,10 +187,35 @@
   position: absolute;
   top: 0;
   left: 0;
+
+}
+
+.detail-video-text {
+  $fontSize: 19;
+  $lineHeight: 30;
+
+  font-size: $fontSize + px;
+  line-height: ($lineHeight / $fontSize);
+  color: #fff;
+  letter-spacing: 0.01em;
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 14;
+    $lineHeight: 21;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+    padding: 0 getvw(20);
+  }
 }
 
 .detail-contents-wrap {
   padding: 0 100px;
+
+  @include largeScreenWidthLess() { 
+    padding: 0 getvw(20);
+  }
 }
 
 .detail-contents {
@@ -194,6 +250,35 @@
       padding-right: percentage(80 / 1051);
     }
   }
+
+  @include largeScreenWidthLess() {  
+    display: block;
+    margin-bottom: getvw(30);
+
+    &.left {
+      .detail-contents-image-wrap {
+        width: 100%;
+        margin-bottom: getvw(20);
+      }
+  
+      .detail-contents-text {
+        width: 100%;
+        padding-left: 0;
+      }
+    }
+
+    &.right {
+      .detail-contents-image-wrap {
+        width: 100%;
+        margin-bottom: getvw(20);
+      }
+  
+      .detail-contents-text {
+        width: 100%;
+        padding-left: 0;
+      }
+    }
+  }
 }
 
 .detail-contents-image-wrap {
@@ -209,10 +294,18 @@
   $fontSize: 18;
   $lineHeight: 30;
 
-  width: 1005;
   font-size: $fontSize + px;
   line-height: ($lineHeight / $fontSize);
   color: #fff;
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 14;
+    $lineHeight: 21;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  }
 }
 
 .detail-credit-wrap {
@@ -220,12 +313,21 @@
   padding: 300px 0 150px;
   display: flex;
   justify-content: center;
+
+  @include largeScreenWidthLess() {  
+    display: block;
+    padding: getvw(60) getvw(20) getvw(40);
+  }
 }
 
 .detail-credit-inner {
   max-width: 520px;
   display: inline-block;
   margin: 0 auto;
+
+  @include largeScreenWidthLess() {  
+    display: block;
+  }
 }
 
 .detail-credit {
@@ -240,6 +342,15 @@
   &:last-child {
     margin-bottom: 0s;
   }
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 14;
+    $lineHeight: 21;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  }
 }
 
 .detail-credit-title {
@@ -249,6 +360,10 @@
 .detail-nav-wrap {
   width: 100%;
   padding-bottom: 60px;
+
+  @include largeScreenWidthLess() { 
+    padding: 0 getvw(20) getvw(60);
+  }
 }
 
 .detail-nav-inner {
@@ -257,6 +372,10 @@
   height: 200px;
   margin: 0 auto;
   position: relative;
+
+  @include largeScreenWidthLess() { 
+    height: getvw(100);
+  }
 }
 
 .detail-nav-contents {
@@ -269,6 +388,10 @@
   top: 50%;
   transform: translateY(-50%) scale(-1, 1);
   left: 0;
+
+  @include largeScreenWidthLess() { 
+    width: getvw(80);
+  }
 }
 
 .detail-nav-link-wrap--center {
@@ -281,14 +404,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @include largeScreenWidthLess() { 
+    $fontSize: 14;
+    $lineHeight: 21;
+
+    @include fontvw($fontSize);
+
+    line-height: ($lineHeight / $fontSize);
+  }
 }
 
 .detail-nav-link-wrap--right {
   width: 150px;
-  height: 200px;
+  height: 100%;
   top: 50%;
   transform: translateY(-50%);
   right: 0;
+
+  @include largeScreenWidthLess() { 
+    width: getvw(80);
+  }
 }
 
 .detail-nav-link-text {
@@ -306,6 +442,12 @@
     left: 50%;
     background-color: #fff;
     transform: translateX(-50%);
+  }
+
+  @include largeScreenWidthLess() { 
+    &::before {
+      height: getvw(20);
+    }
   }
 }
 
