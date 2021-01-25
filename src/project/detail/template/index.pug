@@ -10,4 +10,18 @@ block main
   include /shared/templates/module/_title
 
   .detail-wrap
-    p detail
+    .detail-inner
+      .detail-kv-wrap
+        .detail-bg-wrap
+          .detail-bg-inner
+            .detail-bg(style='background-image:url(/image/img_example_bg.png)')
+
+        .detail-kv
+          .detail-kv-heading
+            .detail-kv-label-wrap
+              span.detail-kv-label-number 01 -
+              p.detail-kv-label INSTALLATION
+
+            p.detail-kv-heading-text / PROJECT MANAGEMENT & DIRECTION
+
+          h2.detail-kv-heading-name PROJECT NAME
