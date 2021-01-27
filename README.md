@@ -60,3 +60,67 @@ $ yarn browser
 
 ## 管理画面
 [https://89-studio.microcms.io/apis/product](https://89-studio.microcms.io/apis/product)
+
+## API SCHEMA
+
+**Base URL: https://89-studio.microcms.io/api/v1**
+
+### /product
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **id** | *string* | product id | `"hjbgj"` |
+| **title** | *string* | プロダクトタイトル | `"案件名"` |
+| **image** | *string* | プロダクト画像 | `"http://example.com/example.png"` |
+| **role** | *string* | 案件役割 | `"エンジニア"` |
+| **type** | *string* | 案件の種類 | `"web"` |
+| **description** | *string* | 案件の詳細 | `"案件の詳細"` |
+| **movie** | *string* | youthube ID | `"sshhgwhj"` |
+| **movieText** | *string* | 動画の詳細 | `"動画の詳細"` |
+| **body** | *body[]* | 案件概要 | |
+| **client** | *string* | クライアント | `"クライアント"` |
+| **category** | *string* | カテゴリー | `"カテゴリー"` |
+| **field** | *string* | 分野 | `"分野"` |
+| **member** | *string* | メンバー | `"メンバー"` |
+
+
+#### body 
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **description** | *string* | コンテンツ詳細 | `"コンテンツ詳細"` |
+| **image** | *string* | コンテンツ画像 | `"http://example.com/example.png"` |
+| **imagePosition** | *string* | 画像の位置 | `left` |
+
+---
+
+### /auth
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **id** | *string* | product id | `"hjbgj"` |
+| **isAuth** | *boolean* | 認証有りにするのかの有無 | `true` |
+
+---
+
+### /master
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **id** | *string* | product id | `"hjbgj"` |
+| **name** | *string* | 名前 | `名前` |
+| **image** | *string* | 画像 | `http://example.com/example.png` |
+| **role** | *string* | 役割 | `役割` |
+| **description** | *string* | 自己紹介 | `自己紹介` |
+| **contact** | *string* | 連絡先 | `連絡先` |
+
+---
+
+### /member
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **id** | *string* | product id | `"hjbgj"` |
+| **name** | *string* | 名前 | `名前` |
+| **image** | *string* | 画像 | `http://example.com/example.png` |
+| **role** | *string* | 役割 | `役割` |

@@ -256,7 +256,7 @@
   }
 
   @include largeScreenWidthLess() { 
-    margin-bottom: getvw(0);
+    margin-bottom: getvw(20);
   }
 }
 
