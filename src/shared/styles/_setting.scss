@@ -27,6 +27,27 @@ li {
   list-style: none;
 }
 
+.barba-leave-active,
+.barba-enter-active {
+  transition: opacity 0.4s ease;
+}
+
+.barba-leave {
+  opacity: 1;
+}
+
+.barba-enter {
+  opacity: 0;
+}
+
+.barba-leave-to {
+  opacity: 0;
+}
+
+.barba-enter-to {
+  opacity: 1;
+}
+
 .sw-body {
   background-color: $COLOR_BG_PRIMARY;
 

@@ -21,7 +21,11 @@ html(lang='ja')
 
     include /shared/templates/module/_header
     +header({color: headerColor})
-    block main
 
+    div(data-barba='wrapper')
+      div(data-barba='container', data-barba-namespace='pageName')
+        block main
+
+    script(crossorigin='anonymous', src='https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver%2CNodeList.prototype.forEach')
     script(src='/shared/script/vendor.js')
     script(src='/script/index.js')

@@ -7,12 +7,12 @@
       {
         "title": "projects",
         "description": "Take a look at what\nwe’ve done.",
-        "link": "#"
+        "link": "/project"
       },
       {
         "title": "contact",
         "description": "Have a project you’d\nlike to talk to us",
-        "link": "#"
+        "link": "/about"
       }
     ]
   },

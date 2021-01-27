@@ -1,11 +1,12 @@
-import conf from '../config';
-import glob from 'glob';
-
-const { SRC, EXTENSION_JS, EXTENSION_TSX } = conf;
-
 const path = 'script/index.js';
 
-const entries = {[path]: []};
+let entries = process.env.NODE_ENV === 'production' ? {[path]: [
+  './src/index/script/index.ts'
+]} : {[path]: [
+  './src/index/script/index.ts',
+  'webpack/hot/dev-server',
+  'webpack-hot-middleware/client'
+]}
 
 const defaultStatsOptions = {
   colors: {
@@ -28,21 +29,6 @@ const defaultStatsOptions = {
   source: true,
   errorDetails: true
 };
-
-
-glob.sync(`./${SRC}/**/index${EXTENSION_JS}`, {}).forEach(file => entries[path].push(file));
-
-glob.sync(`./${SRC}/**/index${EXTENSION_TSX}`, {}).forEach((file, i) => {
-  if (process.env.NODE_ENV !== 'production' && i === 0) {
-    entries[path] = [
-      ...entries[path],
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client'
-    ]
-  }
-
-  entries[path].push(file);
-});
 
 export default {
   entry: entries,
