@@ -2,6 +2,7 @@ import { Barba } from './barba';
 
 import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
+import { projectDetailRender } from '../../project/detail/script';
 
 (() => {
   window.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +10,7 @@ import { projectAllRender } from '../../project/all/script';
 
     projectRender();
     projectAllRender();
+    projectDetailRender();
 
     // ページ遷移をここで全部統括管理
     barba.init({
@@ -50,6 +52,7 @@ import { projectAllRender } from '../../project/all/script';
         // プロジェクトトップのレンダー
         projectRender();
         projectAllRender();
+        projectDetailRender();
 
         console.log('最後');
       }
