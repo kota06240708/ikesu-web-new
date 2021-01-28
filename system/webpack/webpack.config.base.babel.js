@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 const path = 'script/index.js';
 
 let entries = process.env.NODE_ENV === 'production' ? {[path]: [

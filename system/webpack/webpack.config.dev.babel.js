@@ -1,6 +1,7 @@
 import conf from '../config';
 import path from 'path';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 import merge from 'webpack-merge';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 
@@ -33,6 +34,7 @@ export default merge(baseConfig, {
       onErrors: () => {},
       clearConsole: true
     }),
+    new Dotenv({ systemvars: true }),
     new NoEmitOnErrorsPlugin()
   ]
 });

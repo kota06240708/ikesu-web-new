@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
+import Dotenv from 'dotenv-webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 
 import baseConfig from './webpack.config.base.babel';
@@ -24,6 +25,7 @@ export default merge(baseConfig, {
     ]
   },
   plugins: [
+    new Dotenv({ systemvars: true }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
