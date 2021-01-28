@@ -5,10 +5,13 @@ import { projectAllRender } from '../../project/all/script';
 import { projectDetailRender } from '../../project/detail/script';
 import { aboutRender } from '../../about/script';
 
+// import Repository from './api';
+
 (() => {
-  window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('DOMContentLoaded', async () => {
     const barba = new Barba();
 
+    // reactのレンダリング
     projectRender();
     projectAllRender();
     projectDetailRender();
@@ -51,7 +54,7 @@ import { aboutRender } from '../../about/script';
         console.log('次のページが表示された直後');
       },
       after() {
-        // プロジェクトトップのレンダー
+        // reactのレンダリング
         projectRender();
         projectAllRender();
         projectDetailRender();
