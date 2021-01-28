@@ -10,10 +10,10 @@ const entry = [
 const entryIndex = `./${SRC}/${INDEX}/**/!(_)${EXTENSION_HTML}`;
 
 const isBeatifyDev = false; // 開発時の整形
-const isBeatifyProd = false; // 本番時の整形
+const isBeatifyProd = true; // 本番時の整形
 
 const isCleanDev = false; // 開発時の圧縮
-const isCleanProd = true; // 本番時の圧縮
+const isCleanProd = false; // 本番時の圧縮
 
 export const PROCESS_DATAS = [
   {

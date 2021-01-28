@@ -10,32 +10,34 @@ block main
   include /shared/templates/module/_heading
   include /shared/templates/module/_title
 
-  .project-wrap
+  #project-app
+
+  //- .project-wrap
     
-    .project-bg-wrap
-      .project-bg-inner
-        .project-bg(style='background-image:url(/image/img_example_bg.png)')
+  //-   .project-bg-wrap
+  //-     .project-bg-inner
+  //-       .project-bg(style='background-image:url(/image/img_example_bg.png)')
 
-    .project-inner
-      .project-heading
-        .project-heading-title
-          +title({title: 'PROJECTS', color: 'black'})
-        p.project-heading-label Take a look at what we’ve done.
+  //-   .project-inner
+  //-     .project-heading
+  //-       .project-heading-title
+  //-         +title({title: 'PROJECTS', color: 'black'})
+  //-       p.project-heading-label Take a look at what we’ve done.
         
-        p.project-heading-description I have been involved in digital installation, hardware development, AR, Web development, AI and so on as a project manger.
+  //-       p.project-heading-description I have been involved in digital installation, hardware development, AR, Web development, AI and so on as a project manger.
 
-      ul.project-contents-wrap
-        - for (var x = 0; x < 9; x++)
-          li.project-contents
-            a.project-contents-link(href='#', style='background-image:url(/image/img_example_bg.png)')
-              .project-contents-link-inner
-                .project-contents-heading
-                  .project-contents-label-wrap
-                    span.project-contents-label-number 01 -
-                    p.project-contents-label INSTALLATION
+  //-     ul.project-contents-wrap
+  //-       - for (var x = 0; x < 9; x++)
+  //-         li.project-contents
+  //-           a.project-contents-link(href='#', style='background-image:url(/image/img_example_bg.png)')
+  //-             .project-contents-link-inner
+  //-               .project-contents-heading
+  //-                 .project-contents-label-wrap
+  //-                   span.project-contents-label-number 01 -
+  //-                   p.project-contents-label INSTALLATION
 
-                  p.project-contents-heading-text / PROJECT MANAGEMENT & DIRECTION
+  //-                 p.project-contents-heading-text / PROJECT MANAGEMENT & DIRECTION
 
-                h2.project-contents-name PROJECT NAME
+  //-               h2.project-contents-name PROJECT NAME
 
     +heading({title: 'All Projects', link: '#'})

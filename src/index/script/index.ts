@@ -1,8 +1,12 @@
 import { Barba } from './barba';
 
+import { projectRender } from '../../project/script';
+
 (() => {
   window.addEventListener('DOMContentLoaded', () => {
     const barba = new Barba();
+
+    projectRender();
 
     // ページ遷移をここで全部統括管理
     barba.init({
@@ -41,7 +45,8 @@ import { Barba } from './barba';
         console.log('次のページが表示された直後');
       },
       after() {
-        // 最後
+        // プロジェクトトップのレンダー
+        projectRender();
 
         console.log('最後');
       }
