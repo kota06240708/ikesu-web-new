@@ -90,7 +90,7 @@ const Template: FC = (): ReactElement => {
         />
         <Contents
           imgURL="/image/img_example_bg.png"
-          imagePosition="left"
+          imagePosition="normal"
           description=""
         />
       </div>
