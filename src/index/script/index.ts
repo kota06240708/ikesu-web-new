@@ -1,6 +1,7 @@
 import { Barba } from './barba';
 import { Loading } from './Loading';
 import { Text } from './text';
+import { Header } from './header';
 
 import { sleep } from '../../shared/scripts/sleep';
 
@@ -16,6 +17,7 @@ import { aboutRender } from '../../about/script';
     const barba = new Barba();
     const loading = new Loading();
     const text = new Text();
+    const header = new Header();
 
     await sleep(2000);
 
@@ -29,6 +31,9 @@ import { aboutRender } from '../../about/script';
     aboutRender();
 
     await loading.end();
+
+    // init
+    header.init();
 
     text.active();
 
