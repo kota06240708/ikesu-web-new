@@ -16,13 +16,15 @@ html(lang='ja')
     meta(name='format-detection', content='telephone=no')
     link(rel='stylesheet', href='/style/index.css')
 
-  body.sw-body(class=`${bgColor !== '' ? bgColor : ''}`)
+  body#js-body.sw-body.loading(class=`${bgColor !== '' ? bgColor : ''}`)
     include /shared/templates/module/_bg
 
     include /shared/templates/module/_loading
 
     include /shared/templates/module/_header
     +header({color: headerColor})
+
+    spqn#js-mouse.sw-mouse.hidden
 
     div(data-barba='wrapper')
       div(data-barba='container', data-barba-namespace='pageName')

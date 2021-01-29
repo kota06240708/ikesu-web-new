@@ -58,6 +58,16 @@ li {
   &.white {
     background-color: #fff;
   }
+
+  &.loading {
+    cursor: wait;
+  }
+
+  cursor: none;
+}
+
+a {
+  cursor: none;
 }
 
 // ==============================================
@@ -82,6 +92,38 @@ li {
     &:nth-child(#{$i + 1}) {
       transition: transform 1s (#{$i * 0.1}s) $easeOutExpo, opacity 1.6s (#{$i * 0.1}s) linear;
     }
+  }
+}
+
+// ==============================================
+// MOUSE
+// ==============================================
+
+.sw-mouse {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000000;
+  transition: opacity 0.2s ease, width 0.3s ease, height 0.3s ease, border-width 0.3s ease;
+  pointer-events: none;
+
+  &.white {
+    background-color: #fff;
+    mix-blend-mode: difference;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  &.hover {
+    border-width: 1px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -435,7 +477,6 @@ $logoWidth: 40;
   width: 120px;
   height: 100px;
   position: relative;
-  cursor: pointer;
 
   @include largeScreenWidthLess() {
     width: getvw(120);

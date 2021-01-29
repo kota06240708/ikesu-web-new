@@ -3,10 +3,10 @@ mixin header({color})
 
     header#js-header-wrap.sw-header-wrap.loading
       .js-header-inner.sw-header-inner(class=`${color ? color : ''}`)
-        a.sw-header-link(href='/')
+        a.js-hover.sw-header-link(href='/')
           include /shared/templates/module/_logo
 
-        #js-toggle-wrap.sw-header-toggle-wrap
+        #js-toggle-wrap.js-hover.sw-header-toggle-wrap
           .sw-header-toggle-contents
             span.js-toggle.sw-header-toggle
           .sw-header-toggle-contents
@@ -18,5 +18,5 @@ mixin header({color})
           each item in data.siteWide.link
             li.sw-nav-list
               .js-nav.sw-nav-list-inner
-                a.sw-nav-link(href=item.link)
+                a.js-hover.sw-nav-link(href=item.link)
                   p.sw-nav-text #{item.title}

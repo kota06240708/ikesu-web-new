@@ -100,6 +100,7 @@ export class Header extends Global {
     this.isAnimation = true;
 
     this.$$nav.classList.remove('open');
+    this.updateMouseColor('black');
 
     this.isOpen = false;
     this.$$headerInner.classList.remove('open');
@@ -118,6 +119,7 @@ export class Header extends Global {
     }
 
     this.isAnimation = true;
+    this.updateMouseColor('white');
 
     this.isOpen = true;
     this.$$headerInner.classList.add('open');

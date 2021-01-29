@@ -17,12 +17,14 @@ type TInit = {
 export class Barba {
   private isTransition: boolean;
   private $$links: HTMLElement[];
+  private getPrevURL: string;
+  private getNextURL: string;
 
   constructor() {
     this.isTransition = false;
     this.$$links = makeArray(document.querySelectorAll('a[href]'));
 
-    console.log(this.isTransition);
+    this.onClickLink = this.onClickLink.bind(this);
   }
 
   // 初期発火
@@ -73,6 +75,7 @@ export class Barba {
           },
           async after() {
             // 最後
+            _this.refresh();
 
             after ? await after() : null;
           }
@@ -84,17 +87,41 @@ export class Barba {
   // イベントリスナー
   private onListener(): void {
     this.$$links.forEach((link: HTMLElement) => {
-      link.addEventListener(
-        'click',
-        (e: MouseEvent) => this.onClickLinkDelete(e),
-        false
-      );
+      link.addEventListener('click', this.onClickLink);
     });
   }
 
+  // イベント削除
+  private onRemoveListener(): void {
+    this.$$links.forEach((link: HTMLElement) => {
+      link.removeEventListener('click', this.onClickLink);
+    });
+  }
+
+  // イベント再発火
+  private refresh(): void {
+    this.onRemoveListener();
+
+    this.$$links = makeArray(document.querySelectorAll('a[href]'));
+    this.onListener();
+  }
+
+  // 遷移する前のURLを取得
+  public get prev(): string {
+    return this.getPrevURL;
+  }
+
+  // 遷移先のURLを取得
+  public get next(): string {
+    return this.getNextURL;
+  }
+
   // 同じリンクの場合発火させない
-  private onClickLinkDelete(e: MouseEvent): void {
+  private onClickLink(e: MouseEvent): void {
     const el = e.currentTarget as HTMLLinkElement;
+
+    this.getPrevURL = window.location.href;
+    this.getNextURL = el.href;
 
     if (el.href === window.location.href) {
       e.preventDefault();

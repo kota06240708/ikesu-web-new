@@ -1,9 +1,12 @@
 import { sleep } from '../../../shared/scripts/sleep';
 
-class Global {
+import { Mouse } from '../mouse';
+
+class Global extends Mouse {
   private $$bg: HTMLElement;
 
   constructor() {
+    super();
     this.$$bg = document.getElementById('js-bg-wrap');
   }
 

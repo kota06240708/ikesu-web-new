@@ -32,6 +32,10 @@ import { aboutRender } from '../../about/script';
     projectDetailRender();
     aboutRender();
 
+    // マウスのローディングを解除
+    global.removeMouseLoading();
+    global.mouseMove();
+
     // ローディング解除
     await loading.end();
 
@@ -52,6 +56,7 @@ import { aboutRender } from '../../about/script';
       async beforeLeave() {
         // 現在のページを離れる直前
 
+        // メニューが開いてない場合
         if (!header.isHeaderOpen) {
           header.addLoadingHeader();
           await global.bgOpen();
