@@ -1,5 +1,6 @@
 import { Barba } from './barba';
 import { Loading } from './Loading';
+import { Text } from './text';
 
 import { sleep } from '../../shared/scripts/sleep';
 
@@ -14,16 +15,26 @@ import { aboutRender } from '../../about/script';
   window.addEventListener('DOMContentLoaded', async () => {
     const barba = new Barba();
     const loading = new Loading();
+    const text = new Text();
 
     await sleep(2000);
 
-    await loading.end();
+    // 文字列をラップ
+    text.coating();
 
     // reactのレンダリング
     projectRender();
     projectAllRender();
     projectDetailRender();
     aboutRender();
+
+    await loading.end();
+
+    text.active();
+
+    window.addEventListener('scroll', () => {
+      text.active();
+    });
 
     // ページ遷移をここで全部統括管理
     barba.init({

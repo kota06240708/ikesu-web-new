@@ -58,6 +58,22 @@ body {
   }
 }
 
+.top-kv-title--pc {
+  display: block;
+
+  @include largeScreenWidthLess() {
+    display: none;
+  }
+}
+
+.top-kv-title--sp {
+  display: none;
+
+  @include largeScreenWidthLess() {
+    display: block;
+  }
+}
+
 .top-newline {
   display: none;
 

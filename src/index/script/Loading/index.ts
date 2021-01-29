@@ -16,7 +16,7 @@ export class Loading extends Global {
     this.$$loaderText = makeArray(document.querySelectorAll('.js-loader-text'));
   }
 
-  // ローディングの処理を完了させる。
+  // ローディングの処理を完了。
   public end(): Promise<unknown> {
     return new Promise(async (resolve) => {
       await gsapTo(this.$$loaderText, {

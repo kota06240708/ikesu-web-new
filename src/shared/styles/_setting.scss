@@ -61,6 +61,31 @@ li {
 }
 
 // ==============================================
+// JS
+// ==============================================
+
+.js-text-wrap {
+  &.active {
+    .js-text {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+.js-text {
+  opacity: 0;
+  transform: translate3d(-20px, 0, 0);
+  display: inline-block;
+
+  @for $i from 0 through 20 {
+    &:nth-child(#{$i + 1}) {
+      transition: transform 1s (#{$i * 0.1}s) $easeOutExpo, opacity 1.6s (#{$i * 0.1}s) linear;
+    }
+  }
+}
+
+// ==============================================
 // LOADING
 // ==============================================
 
@@ -76,15 +101,6 @@ li {
       transition: opacity 0.6s 1s $easeInExpo;
     }
   }
-}
-
-.loaging-leave-active {
-  transform-origin: left;
-  transition: transform 0.6s 1s $easeInExpo;
-}
-
-.loaging-leave-to {
-  transform: scale(0, 1);
 }
 
 .sw-loading-inner {
