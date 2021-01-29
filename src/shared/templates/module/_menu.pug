@@ -3,7 +3,7 @@ mixin menu(data)
     ul.sw-menu-contents-wrap
 
       each item in data
-        li.sw-menu-contents
+        li.js-sw-menu.sw-menu-contents
           a.sw-menu-link(href=item.link)
             .sw-menu-contents-title-wrap
               h2.sw-menu-contents-title #{item.title}

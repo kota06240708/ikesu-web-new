@@ -1,4 +1,7 @@
 import { Barba } from './barba';
+import { Loading } from './Loading';
+
+import { sleep } from '../../shared/scripts/sleep';
 
 import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
@@ -10,6 +13,11 @@ import { aboutRender } from '../../about/script';
 (() => {
   window.addEventListener('DOMContentLoaded', async () => {
     const barba = new Barba();
+    const loading = new Loading();
+
+    await sleep(2000);
+
+    await loading.end();
 
     // reactのレンダリング
     projectRender();

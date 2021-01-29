@@ -1,8 +1,8 @@
 mixin header({color})
   div
 
-    header.sw-header-wrap
-      #js-header-wrap.sw-header-inner(class=`${color ? color : ''}`)
+    header#js-header-wrap.sw-header-wrap.loading
+      .js-header-inner.sw-header-inner(class=`${color ? color : ''}`)
         a.sw-header-link(href='/')
           include /shared/templates/module/_logo
 

@@ -19,6 +19,8 @@ html(lang='ja')
   body.sw-body(class=`${bgColor !== '' ? bgColor : ''}`)
     include /shared/templates/module/_bg
 
+    include /shared/templates/module/_loading
+
     include /shared/templates/module/_header
     +header({color: headerColor})
 
