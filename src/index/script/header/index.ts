@@ -7,10 +7,12 @@ import { gsapTo } from '../../../shared/scripts/gsap';
 export class Header extends Global {
   private isOpen: boolean;
   private isAnimation: boolean;
+  private isHover: boolean;
 
   private $$headerWrap: HTMLElement;
   private $$headerInner: HTMLElement;
   private $$toggle: HTMLElement;
+  private $$toggleLines: HTMLElement[];
   private $$nav: HTMLElement;
   private $$navLists: HTMLElement[];
 
@@ -22,10 +24,14 @@ export class Header extends Global {
       '.js-header-inner'
     ) as HTMLElement;
     this.$$toggle = document.getElementById('js-toggle-wrap');
+    this.$$toggleLines = makeArray(
+      this.$$toggle.querySelectorAll('.js-toggle')
+    );
     this.$$nav = document.getElementById('js-nav-wrap');
     this.$$navLists = makeArray(this.$$nav.querySelectorAll('.js-nav'));
 
     this.isAnimation = false;
+    this.isHover = false;
   }
 
   public init(): void {
@@ -53,8 +59,39 @@ export class Header extends Global {
     this.$$toggle.addEventListener('click', () => {
       this.isOpen ? this.close() : this.open();
     });
+
+    this.$$toggle.addEventListener('mouseover', () => {
+      this.onToggleHover();
+    });
   }
 
+  private async onToggleHover(): Promise<void> {
+    if (this.isHover) {
+      return;
+    }
+
+    this.isHover = true;
+
+    await gsapTo(this.$$toggleLines, {
+      duration: 0.2,
+      x: '100%',
+      stagger: 0.1
+    });
+
+    gsap.set(this.$$toggleLines, {
+      x: '-100%'
+    });
+
+    await gsapTo(this.$$toggleLines, {
+      duration: 0.2,
+      x: 0,
+      stagger: 0.1
+    });
+
+    this.isHover = false;
+  }
+
+  // メニュー非表示
   public async close(): Promise<void> {
     if (this.isAnimation) {
       return;
@@ -74,6 +111,7 @@ export class Header extends Global {
     this.isAnimation = false;
   }
 
+  // メニュー表示
   public async open(): Promise<void> {
     if (this.isAnimation) {
       return;

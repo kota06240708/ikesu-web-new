@@ -25,9 +25,10 @@ export class Loading extends Global {
             el.classList.remove('loading')
           );
         },
-        duration: 0.8,
-        webkitFilter: `blur(${50}px)`,
-        opacity: 0
+        duration: 1.6,
+        webkitFilter: `blur(${10}px)`,
+        opacity: 0,
+        ease: 'power4.out'
       });
 
       gsap.to(this.$$loader, {
