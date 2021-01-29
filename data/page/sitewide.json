@@ -14,19 +14,19 @@
       },
       {
         "title": "who we are",
-        "link": "/"
+        "link": "/about"
       },
       {
         "title": "creators",
-        "link": "/"
+        "link": "/about"
       },
       {
         "title": "projects",
-        "link": "/"
+        "link": "/project"
       },
       {
         "title": "contact",
-        "link": "/"
+        "link": "/about"
       }
     ]
   }

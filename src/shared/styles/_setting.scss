@@ -641,17 +641,11 @@ $logoWidth: 40;
 .sw-nav-list {
   width: 100%;
   border-bottom: solid 1px #363636;
+  position: relative;
 
   &:first-child {
     border-top: solid 1px #363636;
   }
-}
-
-.sw-nav-link {
-  text-decoration: none;
-  padding: 40px 0 40px 100px;
-  display: block;
-  position: relative;
 
   &::before {
     content: '';
@@ -678,6 +672,16 @@ $logoWidth: 40;
       }
     }
   }
+}
+
+.sw-nav-list-inner {
+  width: 100%;
+}
+
+.sw-nav-link {
+  text-decoration: none;
+  padding: 40px 0 40px 100px;
+  display: block;
 
   @include largeScreenWidthLess() {
     padding: getvw(20) 0 getvw(20) getvw(50);

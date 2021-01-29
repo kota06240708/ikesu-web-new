@@ -16,6 +16,7 @@ mixin header({color})
       .sw-nav-inner
         ul.sw-nav-list-wrap
           each item in data.siteWide.link
-            li.js-nav.sw-nav-list
-              a.sw-nav-link(href=item.link)
-                p.sw-nav-text #{item.title}
+            li.sw-nav-list
+              .js-nav.sw-nav-list-inner
+                a.sw-nav-link(href=item.link)
+                  p.sw-nav-text #{item.title}

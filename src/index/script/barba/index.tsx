@@ -48,8 +48,8 @@ export class Barba {
           before() {
             before ? before() : null;
           },
-          beforeLeave() {
-            beforeLeave ? beforeLeave() : null;
+          async beforeLeave() {
+            beforeLeave ? await beforeLeave() : null;
           },
           async leave() {
             leave ? await leave() : null;
@@ -66,15 +66,15 @@ export class Barba {
           async enter() {
             enter ? await enter() : null;
           },
-          afterEnter() {
+          async afterEnter() {
             // 次のページが表示された直後
 
-            afterEnter ? afterEnter() : null;
+            afterEnter ? await afterEnter() : null;
           },
-          after() {
+          async after() {
             // 最後
 
-            after ? after() : null;
+            after ? await after() : null;
           }
         }
       ]

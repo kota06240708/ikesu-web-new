@@ -2,6 +2,7 @@ import { Barba } from './barba';
 import { Loading } from './Loading';
 import { Text } from './text';
 import { Header } from './header';
+import Global from './global';
 
 import { sleep } from '../../shared/scripts/sleep';
 
@@ -18,6 +19,7 @@ import { aboutRender } from '../../about/script';
     const loading = new Loading();
     const text = new Text();
     const header = new Header();
+    const global = new Global();
 
     await sleep(2000);
 
@@ -30,11 +32,11 @@ import { aboutRender } from '../../about/script';
     projectDetailRender();
     aboutRender();
 
+    // ローディング解除
     await loading.end();
 
     // init
     header.init();
-
     text.active();
 
     window.addEventListener('scroll', () => {
@@ -47,44 +49,49 @@ import { aboutRender } from '../../about/script';
         // 最初
         console.log('最初');
       },
-      beforeLeave() {
+      async beforeLeave() {
         // 現在のページを離れる直前
 
-        console.log('現在のページを離れる直前');
+        if (!header.isHeaderOpen) {
+          header.addLoadingHeader();
+          await global.bgOpen();
+        }
       },
       async leave() {
-        // 現在のページを離れる時
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        console.log('leave');
       },
       afterLeave() {
         // 現在のページを離れた直後
 
-        console.log('現在のページを離れた直後');
+        console.log('afterLeave');
       },
       beforeEnter() {
         // 次のページを表示する直前
 
-        console.log('次のページを表示する直前');
+        console.log('beforeEnter');
       },
       async enter() {
-        // 現在のページを離れる時
-        await new Promise((resolve) => {
-          return setTimeout(resolve, 1000);
-        });
+        console.log('enter');
       },
-      afterEnter() {
+      async afterEnter() {
         // 次のページが表示された直後
 
-        console.log('次のページが表示された直後');
+        console.log('afterEnter');
       },
-      after() {
+      async after() {
         // reactのレンダリング
         projectRender();
         projectAllRender();
         projectDetailRender();
         aboutRender();
 
-        console.log('最後');
+        if (!header.isHeaderOpen) {
+          await global.bgClose();
+
+          header.removeLoadingHeader();
+        } else {
+          await header.close();
+        }
       }
     });
   });

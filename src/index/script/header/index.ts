@@ -164,13 +164,15 @@ export class Header extends Global {
     return new Promise(async (resolve) => {
       gsap.to(this.$$nav, {
         opacity: 0,
-        duration: 0.2
+        duration: 0.3
       });
 
-      await gsapTo(this.$$navLists, {
+      gsapTo(this.$$navLists, {
         x: window.innerWidth,
-        duration: 0.4
+        duration: 0.6
       });
+
+      await sleep(400);
 
       this.$$nav.classList.remove('open');
 
