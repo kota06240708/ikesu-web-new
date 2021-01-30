@@ -11,6 +11,10 @@ export class Mouse {
     this.$$body = document.getElementById('js-body');
     this.$$mouse = document.getElementById('js-mouse');
     this.$$hovers = makeArray(document.querySelectorAll('.js-hover'));
+
+    this.onMousemove = this.onMousemove.bind(this);
+    this.onMouseover = this.onMouseover.bind(this);
+    this.onMouseout = this.onMouseout.bind(this);
   }
 
   // ローディング終了
@@ -26,24 +30,63 @@ export class Mouse {
     this.$$mouse.classList.add(color);
   }
 
+  // イベントを初期化
+  public mouseRefresh(): void {
+    this.$$hovers = makeArray(document.querySelectorAll('.js-hover'));
+
+    this.removeMouseMove();
+    this.mouseMove();
+  }
+
   // マウスのアニメーション発火
   public mouseMove(): void {
-    document.addEventListener('mousemove', (e: MouseEvent) => {
-      this.$$mouse.style.transform = `translate(${
-        e.clientX - this.$$mouse.clientWidth / 2
-      }px,  ${e.clientY - this.$$mouse.clientHeight / 2}px)`;
-    });
+    document.addEventListener('mousemove', this.onMousemove);
 
     if (this.$$hovers.length !== 0) {
       this.$$hovers.forEach((r: HTMLElement) => {
-        r.addEventListener('mouseover', () => {
-          this.$$mouse.classList.add('hover');
-        });
+        r.addEventListener('mouseover', this.onMouseover);
 
-        r.addEventListener('mouseout', () => {
-          this.$$mouse.classList.remove('hover');
-        });
+        r.addEventListener('mouseout', this.onMouseout);
       });
+    }
+  }
+
+  // マウスイベント削除
+  private removeMouseMove(): void {
+    document.removeEventListener('mousemove', this.onMousemove);
+
+    if (this.$$hovers.length !== 0) {
+      this.$$hovers.forEach((r: HTMLElement) => {
+        r.removeEventListener('mouseover', this.onMouseover);
+
+        r.removeEventListener('mouseout', this.onMouseout);
+      });
+    }
+  }
+
+  private onMousemove(e: MouseEvent): void {
+    this.$$mouse.style.transform = `translate(${
+      e.clientX - this.$$mouse.clientWidth / 2
+    }px,  ${e.clientY - this.$$mouse.clientHeight / 2}px)`;
+  }
+
+  private onMouseover(): void {
+    this.$$mouse.classList.add('hover');
+  }
+
+  private onMouseout(): void {
+    this.$$mouse.classList.remove('hover');
+  }
+
+  // urlでマウスの色を分岐
+  public checkMouseColor(url: string): void {
+    // マウスの色を分岐
+    const isWhite = url.indexOf('project') !== -1 && url.indexOf('all') === -1;
+
+    if (isWhite) {
+      this.updateMouseColor('white');
+    } else {
+      this.updateMouseColor('black');
     }
   }
 }

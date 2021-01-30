@@ -100,7 +100,9 @@ export class Header extends Global {
     this.isAnimation = true;
 
     this.$$nav.classList.remove('open');
-    this.updateMouseColor('black');
+
+    // urlでマウスの色を切り替える
+    this.checkMouseColor(window.location.href);
 
     this.isOpen = false;
     this.$$headerInner.classList.remove('open');
@@ -180,6 +182,18 @@ export class Header extends Global {
 
       resolve();
     });
+  }
+
+  // ヘッダーの色を分岐
+  public checkHeaderColor(url: string): void {
+    // マウスの色を分岐
+    const isWhite = url.indexOf('project') !== -1 && url.indexOf('all') === -1;
+
+    if (isWhite) {
+      this.$$headerInner.classList.add('white');
+    } else {
+      this.$$headerInner.classList.remove('white');
+    }
   }
 
   public get isHeaderOpen(): boolean {

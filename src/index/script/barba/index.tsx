@@ -1,6 +1,8 @@
 import barba, { ISchemaPage } from '@barba/core';
 import barbaPrefetch from '@barba/prefetch';
 
+import Global from '../global';
+
 import { makeArray } from '../../../shared/scripts/make-array';
 
 type TInit = {
@@ -14,13 +16,14 @@ type TInit = {
   after?: () => void;
 };
 
-export class Barba {
+export class Barba extends Global {
   private isTransition: boolean;
   private $$links: HTMLElement[];
   private getPrevURL: string;
   private getNextURL: string;
 
   constructor() {
+    super();
     this.isTransition = false;
     this.$$links = makeArray(document.querySelectorAll('a[href]'));
 

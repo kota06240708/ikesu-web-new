@@ -34,7 +34,15 @@ import { aboutRender } from '../../about/script';
 
     // マウスのローディングを解除
     global.removeMouseLoading();
+
+    // マウスイベント発火
     global.mouseMove();
+
+    // マウス色を判定
+    global.checkMouseColor(window.location.href);
+
+    // ヘッダーの色を確認
+    header.checkHeaderColor(window.location.href);
 
     // ローディング解除
     await loading.end();
@@ -79,7 +87,11 @@ import { aboutRender } from '../../about/script';
         console.log('enter');
       },
       async afterEnter() {
-        // 次のページが表示された直後
+        // マウスの色を分岐
+        global.checkMouseColor(barba.next);
+
+        // ヘッダーの色を分岐
+        header.checkHeaderColor(barba.next);
 
         console.log('afterEnter');
       },
@@ -90,6 +102,10 @@ import { aboutRender } from '../../about/script';
         projectDetailRender();
         aboutRender();
 
+        // イベントを初期化
+        global.mouseRefresh();
+
+        // ページ遷移アニメーション分岐
         if (!header.isHeaderOpen) {
           await global.bgClose();
 
