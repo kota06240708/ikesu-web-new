@@ -174,7 +174,7 @@ export class Header extends Global {
       });
 
       gsapTo(this.$$navLists, {
-        x: window.innerWidth,
+        x: 300,
         duration: 0.6
       });
 
