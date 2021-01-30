@@ -15,10 +15,10 @@ import { aboutRender, About } from '../../about/script';
 
 (() => {
   window.addEventListener('DOMContentLoaded', async () => {
-    const barba = new Barba();
     const loading = new Loading();
     const text = new Text();
     const header = new Header();
+    const barba = new Barba({ header });
     const global = new Global();
     const about = new About();
 
@@ -46,6 +46,10 @@ import { aboutRender, About } from '../../about/script';
 
     // ヘッダーの色を確認
     header.checkHeaderColor(window.location.href);
+
+    global.checkHashScroll(0.1);
+
+    await sleep(200);
 
     // aboutのアニメーションデータをセット
     about.setData();
@@ -113,6 +117,10 @@ import { aboutRender, About } from '../../about/script';
 
         // イベントを初期化
         global.mouseRefresh();
+
+        global.checkHashScroll(0.1);
+
+        await sleep(100);
 
         // ページ遷移アニメーション分岐
         if (!header.isHeaderOpen) {

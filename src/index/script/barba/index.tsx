@@ -2,6 +2,7 @@ import barba, { ISchemaPage } from '@barba/core';
 import barbaPrefetch from '@barba/prefetch';
 
 import Global from '../global';
+import { Header } from '../header';
 
 import { makeArray } from '../../../shared/scripts/make-array';
 
@@ -16,16 +17,24 @@ type TInit = {
   after?: () => void;
 };
 
+type TPreload = {
+  header: Header;
+};
+
 export class Barba extends Global {
   private isTransition: boolean;
   private $$links: HTMLElement[];
   private getPrevURL: string;
   private getNextURL: string;
 
-  constructor() {
+  private header: Header;
+
+  constructor(preload: TPreload) {
     super();
     this.isTransition = false;
     this.$$links = makeArray(document.querySelectorAll('a[href]'));
+
+    this.header = preload.header;
 
     this.onClickLink = this.onClickLink.bind(this);
   }
@@ -125,6 +134,10 @@ export class Barba extends Global {
 
     this.getPrevURL = window.location.href;
     this.getNextURL = el.href;
+
+    if (el.href.split('#')[0] === window.location.href.split('#')[0]) {
+      this.header.close();
+    }
 
     if (el.href === window.location.href) {
       e.preventDefault();

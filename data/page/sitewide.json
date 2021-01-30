@@ -14,11 +14,11 @@
       },
       {
         "title": "who we are",
-        "link": "/about"
+        "link": "/about#kv"
       },
       {
         "title": "creators",
-        "link": "/about/#member"
+        "link": "/about#member"
       },
       {
         "title": "projects",
@@ -26,7 +26,7 @@
       },
       {
         "title": "contact",
-        "link": "/about/#contact"
+        "link": "/about#contact"
       }
     ]
   }

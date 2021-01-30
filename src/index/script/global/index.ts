@@ -1,4 +1,6 @@
 import { sleep } from '../../../shared/scripts/sleep';
+import smoothScroll from '../../../shared/scripts/smooth-scroll';
+import { offsetTop } from '../../../shared/scripts/offset';
 
 import { Mouse } from '../mouse';
 
@@ -18,6 +20,7 @@ class Global extends Mouse {
     const top = window.pageYOffset || document.documentElement.scrollTop;
     return top + window.innerHeight / 2;
   }
+
   protected get scrollBottom(): number {
     const top = window.pageYOffset || document.documentElement.scrollTop;
     return top + window.innerHeight;
@@ -33,6 +36,15 @@ class Global extends Mouse {
     this.$$bg.classList.add('open');
 
     await sleep();
+  }
+
+  public checkHashScroll(speed?: number): void {
+    const urlHash = location.hash;
+
+    if (urlHash) {
+      const top = offsetTop(document.querySelector(urlHash));
+      smoothScroll(top, speed ? speed : 0.6);
+    }
   }
 }
 
