@@ -67,7 +67,11 @@ import { aboutRender, About } from '../../about/script';
     about.active();
 
     // topのアニメーションの準備
-    top.setTopData();
+    top.setTopData({
+      image01: '/image/img_example_bg.png',
+      image02: '/image/img_example_02.png',
+      image03: '/image/img_bg.png'
+    });
 
     // ローディング解除
     await loading.end();
@@ -156,7 +160,11 @@ import { aboutRender, About } from '../../about/script';
         global.checkHashScroll(0.1);
 
         // topのアニメーションの準備
-        top.setTopData();
+        top.setTopData({
+          image01: '/image/img_example_bg.png',
+          image02: '/image/img_example_02.png',
+          image03: '/image/img_bg.png'
+        });
 
         await sleep(100);
 

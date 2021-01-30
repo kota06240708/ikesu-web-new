@@ -9,6 +9,12 @@ type TData = {
   isCurrent: boolean;
 };
 
+type TImage = {
+  image01: string;
+  image02: string;
+  image03: string;
+};
+
 export class Top {
   private $$topBgWrap: HTMLElement[];
   private data: TData[];
@@ -18,7 +24,7 @@ export class Top {
     this.data = [];
   }
 
-  public setTopData(): void {
+  public setTopData({ image01, image02, image03 }: TImage): void {
     this.$$topBgWrap = makeArray(document.querySelectorAll('.js-top-kv-wrap'));
 
     if (!this.$$topBgWrap) {
@@ -34,10 +40,25 @@ export class Top {
         r.classList.add('current');
       }
 
+      const bg = r.querySelector('.js-top-kv') as HTMLElement;
+      switch (i) {
+        case 0:
+          bg.style.backgroundImage = `url(${image01})`;
+          break;
+
+        case 1:
+          bg.style.backgroundImage = `url(${image02})`;
+          break;
+
+        case 2:
+          bg.style.backgroundImage = `url(${image03})`;
+          break;
+      }
+
       return {
         bgWrap: r,
         bgInner: r.querySelector('.js-top-kv-inner'),
-        bg: r.querySelector('.js-top-kv'),
+        bg,
         isCurrent
       };
     });
