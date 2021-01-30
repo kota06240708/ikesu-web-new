@@ -12,7 +12,7 @@
         "link": "#contact"
       }
     ],
-    "contactMenu": [
+    "canMenu": [
       {
         "title": "PROJECTS",
         "description": "",
@@ -22,6 +22,18 @@
         "title": "CONTACT",
         "description": "",
         "link": "#contact"
+      }
+    ],
+    "contactMenu": [
+      {
+        "title": "PROJECTS",
+        "description": "",
+        "link": "/project"
+      },
+      {
+        "title": "TOP",
+        "description": "",
+        "link": "/"
       }
     ],
     "can": [

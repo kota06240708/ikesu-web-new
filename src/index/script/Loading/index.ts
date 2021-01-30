@@ -25,8 +25,8 @@ export class Loading extends Global {
             el.classList.remove('loading')
           );
         },
-        duration: 1.6,
-        webkitFilter: `blur(${100}px)`,
+        duration: 2,
+        webkitFilter: `blur(${30}px)`,
         ease: 'power4.out'
       });
 

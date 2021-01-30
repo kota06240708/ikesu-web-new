@@ -47,6 +47,7 @@ import { aboutRender, About } from '../../about/script';
     // ヘッダーの色を確認
     header.checkHeaderColor(window.location.href);
 
+    // hash値の場所に移動
     global.checkHashScroll(0.1);
 
     await sleep(200);
@@ -61,6 +62,9 @@ import { aboutRender, About } from '../../about/script';
     // init
     header.init();
     text.active();
+
+    // ハッシュスクロール発火
+    about.onClickHashScroll();
 
     // スクロールイベント
     window.addEventListener('scroll', () => {
@@ -106,6 +110,9 @@ import { aboutRender, About } from '../../about/script';
         // ヘッダーの色を分岐
         header.checkHeaderColor(barba.next);
 
+        // イベントを削除
+        about.removeHashScroll();
+
         console.log('afterEnter');
       },
       async after() {
@@ -118,6 +125,7 @@ import { aboutRender, About } from '../../about/script';
         // イベントを初期化
         global.mouseRefresh();
 
+        // hash値の場所に移動
         global.checkHashScroll(0.1);
 
         await sleep(100);
@@ -132,7 +140,12 @@ import { aboutRender, About } from '../../about/script';
         }
 
         about.setData();
+
+        // スクロールアニメーション
         about.active();
+
+        // ハッシュスクロール発火
+        about.onClickHashScroll();
 
         text.coating();
         text.active();
