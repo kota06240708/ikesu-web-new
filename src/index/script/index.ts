@@ -2,6 +2,7 @@ import { Barba } from './barba';
 import { Loading } from './Loading';
 import { Text } from './text';
 import { Header } from './header';
+import { Top } from './top';
 import Global from './global';
 
 import { sleep } from '../../shared/scripts/sleep';
@@ -21,6 +22,13 @@ import { aboutRender, About } from '../../about/script';
     const barba = new Barba({ header });
     const global = new Global();
     const about = new About();
+    const top = new Top();
+
+    const isTop: () => boolean = () => {
+      const path = `${window.location.protocol}//${window.location.host}`;
+
+      return !!(window.location.href.replace(path, '') === '/');
+    };
 
     await sleep(1500);
 
@@ -58,6 +66,9 @@ import { aboutRender, About } from '../../about/script';
     about.setData();
     about.active();
 
+    // topのアニメーションの準備
+    top.setTopData();
+
     // ローディング解除
     await loading.end();
 
@@ -73,6 +84,18 @@ import { aboutRender, About } from '../../about/script';
       text.active();
       about.active();
     });
+
+    let timer = -1;
+
+    const topAnimation = () => {
+      top.slide();
+
+      timer = window.setTimeout(() => topAnimation(), 5000);
+    };
+
+    if (isTop()) {
+      window.setTimeout(() => topAnimation(), 1000);
+    }
 
     // ページ遷移をここで全部統括管理
     barba.init({
@@ -91,6 +114,8 @@ import { aboutRender, About } from '../../about/script';
           header.addLoadingHeader();
           await global.bgOpen();
         }
+
+        window.clearTimeout(timer);
       },
       async leave() {
         console.log('leave');
@@ -130,6 +155,9 @@ import { aboutRender, About } from '../../about/script';
         // hash値の場所に移動
         global.checkHashScroll(0.1);
 
+        // topのアニメーションの準備
+        top.setTopData();
+
         await sleep(100);
 
         // ページ遷移アニメーション分岐
@@ -139,6 +167,10 @@ import { aboutRender, About } from '../../about/script';
           header.removeLoadingHeader();
         } else {
           await header.close();
+        }
+
+        if (isTop()) {
+          window.setTimeout(() => topAnimation(), 1000);
         }
 
         about.setData();

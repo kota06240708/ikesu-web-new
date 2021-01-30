@@ -1,0 +1,100 @@
+import gsap from 'gsap';
+import { makeArray } from '../../../shared/scripts/make-array';
+import { gsapTo } from '../../../shared/scripts/gsap';
+
+type TData = {
+  bgWrap: HTMLElement;
+  bgInner: HTMLElement;
+  bg: HTMLElement;
+  isCurrent: boolean;
+};
+
+export class Top {
+  private $$topBgWrap: HTMLElement[];
+  private data: TData[];
+
+  constructor() {
+    this.$$topBgWrap = makeArray(document.querySelectorAll('.js-top-kv-wrap'));
+    this.data = [];
+  }
+
+  public setTopData(): void {
+    this.$$topBgWrap = makeArray(document.querySelectorAll('.js-top-kv-wrap'));
+
+    if (!this.$$topBgWrap) {
+      return;
+    } else if (this.$$topBgWrap.length === 0) {
+      return;
+    }
+
+    this.data = this.$$topBgWrap.map((r: HTMLElement, i: number) => {
+      const isCurrent = !!(i === 0);
+
+      if (isCurrent) {
+        r.classList.add('current');
+      }
+
+      return {
+        bgWrap: r,
+        bgInner: r.querySelector('.js-top-kv-inner'),
+        bg: r.querySelector('.js-top-kv'),
+        isCurrent
+      };
+    });
+  }
+
+  public async slide(): Promise<void> {
+    if (!this.$$topBgWrap) {
+      return;
+    } else if (this.$$topBgWrap.length === 0) {
+      return;
+    }
+
+    const currentIndex = this.data.findIndex((r: TData) => !!r.isCurrent);
+    const nextIndex =
+      this.data.length - 1 < currentIndex + 1 ? 0 : currentIndex + 1;
+
+    // 次のスライドのクラスを付与
+    this.data[nextIndex].bgWrap.classList.add('next');
+
+    // 次のスライドを少しずらす
+    gsap.set(this.data[nextIndex].bg, {
+      x: 100
+    });
+
+    // 次のスライドのクラスを付与
+    gsapTo(this.data[currentIndex].bgInner, {
+      width: 0,
+      duration: 1,
+      ease: 'power2.inOut'
+    });
+
+    gsapTo(this.data[currentIndex].bg, {
+      x: -100,
+      duration: 1.2,
+      ease: 'power4.inOut'
+    });
+
+    gsapTo(this.data[nextIndex].bg, {
+      x: 0,
+      duration: 1.2,
+      ease: 'power4.inOut'
+    });
+
+    await gsapTo(this.data[nextIndex].bgInner, {
+      width: '100%',
+      duration: 1,
+      ease: 'power2.inOut'
+    });
+
+    this.data[currentIndex].bgWrap.classList.remove('current');
+    this.data[currentIndex].isCurrent = false;
+    this.data[nextIndex].bgWrap.classList.add('current');
+    this.data[nextIndex].bgWrap.classList.remove('next');
+    this.data[nextIndex].isCurrent = true;
+
+    gsap.set(this.data[currentIndex].bgInner, {
+      width: '100%'
+    });
+  }
+}
