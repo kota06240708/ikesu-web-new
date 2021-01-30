@@ -9,7 +9,7 @@ import { sleep } from '../../shared/scripts/sleep';
 import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
 import { projectDetailRender } from '../../project/detail/script';
-import { aboutRender } from '../../about/script';
+import { aboutRender, About } from '../../about/script';
 
 // import Repository from './api';
 
@@ -20,17 +20,20 @@ import { aboutRender } from '../../about/script';
     const text = new Text();
     const header = new Header();
     const global = new Global();
+    const about = new About();
 
-    await sleep(2000);
-
-    // 文字列をラップ
-    text.coating();
+    await sleep(1500);
 
     // reactのレンダリング
     projectRender();
     projectAllRender();
     projectDetailRender();
     aboutRender();
+
+    await sleep(500);
+
+    // 文字列をラップ
+    text.coating();
 
     // マウスのローディングを解除
     global.removeMouseLoading();
@@ -44,6 +47,10 @@ import { aboutRender } from '../../about/script';
     // ヘッダーの色を確認
     header.checkHeaderColor(window.location.href);
 
+    // aboutのアニメーションデータをセット
+    about.setData();
+    about.active();
+
     // ローディング解除
     await loading.end();
 
@@ -51,8 +58,10 @@ import { aboutRender } from '../../about/script';
     header.init();
     text.active();
 
+    // スクロールイベント
     window.addEventListener('scroll', () => {
       text.active();
+      about.active();
     });
 
     // ページ遷移をここで全部統括管理
@@ -113,6 +122,10 @@ import { aboutRender } from '../../about/script';
         } else {
           await header.close();
         }
+
+        text.coating();
+
+        text.active();
       }
     });
   });

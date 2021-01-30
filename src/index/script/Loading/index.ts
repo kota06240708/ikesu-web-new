@@ -26,8 +26,7 @@ export class Loading extends Global {
           );
         },
         duration: 1.6,
-        webkitFilter: `blur(${10}px)`,
-        opacity: 0,
+        webkitFilter: `blur(${100}px)`,
         ease: 'power4.out'
       });
 

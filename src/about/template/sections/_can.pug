@@ -1,11 +1,11 @@
-.about-can-wrap
+.js-about-section.about-can-wrap(data-color='#4e4e4e')
   .about-can-inner
     .about-can-title
       +title({title: 'what we can'})
 
     ul.about-can-list-wrap
       each item in data.about.can
-        li.about-can-list
+        li.js-fade.about-can-list
           h2.about-can-list-title #{item.title}
           p.about-can-list-text #{item.description}
 

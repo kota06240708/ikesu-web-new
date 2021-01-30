@@ -16,7 +16,7 @@ type TProps = {
 
 const List: FC<TProps> = ({ name, role, imgURL }: TProps): ReactElement => {
   return (
-    <li className="about-member-list">
+    <li className="js-fade about-member-list">
       <div className="about-member-list-inner">
         <div className="about-member-list-image-wrap">
           <div className="about-member-list-image-inner">

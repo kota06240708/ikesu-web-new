@@ -74,7 +74,27 @@ a {
 // JS
 // ==============================================
 
+.js-fade {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: transform 1.2s linear, opacity 1.2s $easeInExpo;
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.js-title {
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
 .js-text-wrap {
+
   &.active {
     .js-text {
       opacity: 1;
@@ -88,9 +108,9 @@ a {
   transform: translate3d(-20px, 0, 0);
   display: inline-block;
 
-  @for $i from 0 through 20 {
+  @for $i from 0 through 220 {
     &:nth-child(#{$i + 1}) {
-      transition: transform 1s (#{$i * 0.1}s) $easeOutExpo, opacity 1.6s (#{$i * 0.1}s) linear;
+      transition: transform 1s (#{$i * 0.05}s) $easeOutExpo, opacity 1.2s (#{$i * 0.05}s) linear;
     }
   }
 }

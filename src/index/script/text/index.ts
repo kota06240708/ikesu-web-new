@@ -11,28 +11,38 @@ type TData = {
 
 export class Text extends Global {
   private titles: HTMLElement[];
+  private fade: HTMLElement[];
   private data: TData[];
 
   constructor() {
     super();
     this.titles = makeArray(document.querySelectorAll('.js-title'));
+    this.fade = makeArray(document.querySelectorAll('.js-fade'));
     this.data = [];
   }
 
   // 文字列をコーティング
   public coating(): void {
+    // タイトルを追加
+    this.titles = makeArray(document.querySelectorAll('.js-title'));
+    this.fade = makeArray(document.querySelectorAll('.js-fade'));
+
     if (!this.titles) {
       return;
     } else if (this.titles.length === 0) {
       return;
     }
 
+    // データwp初期化
+    this.data = [];
+
     this.titles.forEach((r: HTMLElement, i: number) => {
       // brで文字列を分解
       const reg = new RegExp(`<(.*?)>`);
       const txtArr = r.innerHTML
         .split(reg)
-        .filter((r: string) => !/^br/i.test(r));
+        .filter((r: string) => !/^br/i.test(r))
+        .map((r: string) => r.replace(/&amp;/g, '&'));
 
       // 既存の文字列を削除
       r.innerHTML = '';
@@ -44,6 +54,11 @@ export class Text extends Global {
             if (text === ' ') {
               text = '&nbsp;';
             }
+
+            if (text === '&') {
+              text = '&amp;';
+            }
+
             return `<span class="js-text">${text}</span>`;
           });
 
@@ -63,6 +78,20 @@ export class Text extends Global {
         isActive: false
       };
     });
+
+    if (!this.fade) {
+      return;
+    } else if (this.fade.length === 0) {
+      return;
+    }
+
+    this.fade.forEach((r: HTMLElement) => {
+      this.data.push({
+        el: r,
+        top: offsetTop(r),
+        isActive: false
+      });
+    });
   }
 
   // タイトルの文字アニメーション
@@ -76,6 +105,16 @@ export class Text extends Global {
 
       if (top < this.scrollBottom && !isActive) {
         r.isActive = true;
+
+        el.classList.add('active');
+
+        const arr = el.querySelectorAll('.js-text-wrap');
+
+        if (!arr) {
+          return;
+        } else if (arr.length === 0) {
+          return;
+        }
 
         const texts = makeArray(el.querySelectorAll('.js-text-wrap'));
         texts.forEach((text: HTMLElement) => text.classList.add('active'));

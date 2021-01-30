@@ -22,7 +22,7 @@ const Template: FC = (): ReactElement => {
       <div className="about-member-inner">
         <div className="about-member-contents">
           <div className="about-member-title">
-            <div className="sw-title black">founder</div>
+            <div className="js-title sw-title black">founder</div>
           </div>
           <div className="about-member-contents-inner">
             <div className="about-member-master-heading-wrap">
@@ -33,13 +33,13 @@ const Template: FC = (): ReactElement => {
                   alt="Hideoki Ilesu"
                 />
               </div>
-              <p className="about-member-master-image-text">
+              <p className="js-fade about-member-master-image-text">
                 Project Manager / Director
                 <br />
                 Hideoki Ikesu
               </p>
             </div>
-            <p className="about-member-master-heading-description">
+            <p className="js-fade about-member-master-heading-description">
               I am a director for projects such as digital marketing, inbound
               marketing, event management, movie creation. All of my projects
               was done not only in Singapore and Japan but in Kuala Lumpur,
@@ -62,7 +62,7 @@ const Template: FC = (): ReactElement => {
         </div>
         <div className="about-member-contents">
           <div className="about-member-title">
-            <div className="sw-title black">partners</div>
+            <div className="js-title sw-title black">partners</div>
           </div>
           <ul className="about-member-list-wrap">
             <List

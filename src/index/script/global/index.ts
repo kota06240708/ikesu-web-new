@@ -14,6 +14,10 @@ class Global extends Mouse {
     return window.pageYOffset || document.documentElement.scrollTop;
   }
 
+  protected get scrollMiddle(): number {
+    const top = window.pageYOffset || document.documentElement.scrollTop;
+    return top + window.innerHeight / 2;
+  }
   protected get scrollBottom(): number {
     const top = window.pageYOffset || document.documentElement.scrollTop;
     return top + window.innerHeight;

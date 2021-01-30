@@ -2,8 +2,15 @@
 @import '../../shared/icons/css/icons';
 
 
-body {
+.about-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
   background-color: $COLOR_BG_PRIMARY;
+  transition: background-color 0.2s linear;
 }
 
 .about-wrap {
@@ -45,6 +52,7 @@ body {
   width: 100%;
   height: 100vh;
   position: relative;
+  z-index: 1;
 
   @include largeScreenWidthLess() {
     height: 100vh;
@@ -89,12 +97,13 @@ body {
 
 .about-self-wrap {
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .about-self-inner {
   width: 100%;
   padding: 170px 0 170px percentage(220 / $X_LARGE_SCREEN_WIDTH);
-  background-color: #fff;
 
   @include largeScreenWidthLess() { 
     padding: getvw(93) getvw(40) getvw(107);
@@ -118,6 +127,22 @@ body {
 
     line-height: ($lineHeight / $fontSize);
     margin-bottom: getvw(50);
+  }
+}
+
+.about-self-title--pc {
+  display: block;
+
+  @include largeScreenWidthLess() {
+    display: none;
+  }
+}
+
+.about-self-title--sp {
+  display: none;
+
+  @include largeScreenWidthLess() {
+    display: block;
   }
 }
 
@@ -148,12 +173,12 @@ body {
 .about-can-wrap {
   width: 100%;
   position: relative;
+  z-index: 1;
 }
 
 .about-can-inner {
   width: 100%;
   padding: 170px 0 215px percentage(220 / $X_LARGE_SCREEN_WIDTH);
-  background-color: #4e4e4e;
 
   @include largeScreenWidthLess() { 
     padding: getvw(93) getvw(40) getvw(107);
@@ -253,6 +278,8 @@ body {
 
 .about-member-wrap {
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .about-member-inner {
@@ -467,12 +494,12 @@ body {
 .about-contact-wrap {
   width: 100%;
   position: relative;
+  z-index: 1;
 }
 
 .about-contact-inner {
   width: 100%;
   padding: 170px 0 215px percentage(220 / $X_LARGE_SCREEN_WIDTH);
-  background-color: #fff;
 
   @include largeScreenWidthLess() { 
     background-color: $COLOR_BG_PRIMARY;
