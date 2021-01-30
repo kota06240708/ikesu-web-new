@@ -1,4 +1,4 @@
-mixin menu(data)
+mixin menu(data, color)
   .sw-menu-wrap
     ul.sw-menu-contents-wrap
 
@@ -6,7 +6,7 @@ mixin menu(data)
         li.js-sw-menu.sw-menu-contents
           a.js-hashs.js-hover.sw-menu-link(href=item.link)
             .sw-menu-contents-title-wrap
-              h2.sw-menu-contents-title #{item.title}
+              h2.sw-menu-contents-title(class=`${color ? color : ''}`) #{item.title}
               .sw-menu-contents-line
                 span.sw-line
-            p.sw-menu-contents-description(class=`${item.description === '' ? 'hidden' : ''}`) !{item.description.replace(/\r?\n|\r/g,"<br>")}
+            p.sw-menu-contents-description(class=`${item.description === '' ? 'hidden' : ''} ${color ? color : ''}`) !{item.description.replace(/\r?\n|\r/g,"<br>")}

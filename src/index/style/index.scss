@@ -17,10 +17,65 @@ body {
   position: relative;
 }
 
+.top-kv-bg-wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.top-kv-bg-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.top-kv-bg-contents {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  &.current {
+    z-index: 1;
+  }
+}
+
+.top-kv-bg-contents-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.top-kv-bg {
+  width: 100vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 .top-kv-wrap {
   width: 100%;
   height: 100vh;
   position: relative;
+  z-index: 1;
 
   @include largeScreenWidthLess() {
     height: 100vh;
@@ -41,7 +96,7 @@ body {
   letter-spacing: 0.7em;
   font-weight: 700;
   line-height: ($lineHeight / $fontSize);
-  color: #000;
+  color: #fff;
   text-transform: uppercase;
   position: absolute;
   top: 50%;

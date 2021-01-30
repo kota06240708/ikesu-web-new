@@ -274,7 +274,6 @@ $logoWidth: 40;
   top: 0;
   left: 0;
   width: 100px;
-  background-color: #fff;
   height: 100vh;
   z-index: $Z_INDEX_HEADING;
   border-bottom: solid 1px $COLOR_LINE_PRIMARY;
@@ -288,12 +287,50 @@ $logoWidth: 40;
     height: getvw(80);
     position: static;
   }
+
+  @include mediumScreenWidthOver {
+    &.hover {
+      .sw-heading-inner {
+        &::before { 
+          transform: translate3d(-100%, 0, 0);
+        }
+      }
+
+      .sw-heading-text {
+        color: #fff;
+      }
+
+      &:hover {
+        .sw-heading-inner {
+          &::before { 
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .sw-heading-text {
+          color: $COLOR_TEXT_PRIMARY;
+        }
+      }
+    }
+  }
 }
 
 .sw-heading-inner {
   width: 100%;
   height: 100%;
   position: relative;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: transform 0.2s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
 }
 
 .sw-heading-link {
@@ -309,11 +346,12 @@ $logoWidth: 40;
   transform: translate(-50%, -50%) rotate(90deg);
   white-space: nowrap;
   text-decoration: none;
+  z-index: 2;
 
   @include mediumScreenWidthOver {
     &:hover {
       .sw-line {
-        transform: scaleX(1.1);
+        transform: scaleX(1.4);
         background-color: $COLOR_ACTIVE_PRIMARY;
   
         &::before {
@@ -321,8 +359,12 @@ $logoWidth: 40;
         }
       }
 
+      .sw-heading-line-back {
+        background-color: $COLOR_ACTIVE_PRIMARY;
+      }
+
       .sw-heading-text {
-        color: $COLOR_ACTIVE_PRIMARY;
+        color: $COLOR_ACTIVE_PRIMARY !important;
       }
     }
   }
@@ -341,22 +383,50 @@ $logoWidth: 40;
         background-color: $COLOR_ACTIVE_PRIMARY;
       }
     }
+
+    .sw-heading-line-back {
+      background-color: $COLOR_ACTIVE_PRIMARY;
+    }
   }
 }
 
-.sw-Heading-line {
-  width: 455px;
+.sw-heading-text-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sw-heading-line {
+  width: 100px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  right: 0;
   background-color: $COLOR_LINE_PRIMARY;
-  transform: translate(-50%, -50%);
-  z-index: 0;
+  transform: translate(100%, -50%);
+  z-index: 1;
 
   @include largeScreenWidthLess() {
-    width: getvw(300);
+    width: getvw(80);
     background-color: $COLOR_ACTIVE_PRIMARY;
   }
+}
+
+.sw-heading-line-back {
+  width: 100px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-color: $COLOR_LINE_PRIMARY;
+  transition: all 0.2s ease;
+  transform: translate(-100%, -50%);
+  z-index: 1;
+
+  @include largeScreenWidthLess() {
+    width: getvw(80);
+    background-color: $COLOR_ACTIVE_PRIMARY;
+  }
+
 }
 
 .sw-heading-text {
@@ -368,7 +438,6 @@ $logoWidth: 40;
   letter-spacing: 0.12em;
   color: $COLOR_TEXT_PRIMARY;
   padding: 0 25px;
-  background-color: #fff;
   position: relative;
   z-index: 1;
   transition: all 0.2s ease;
@@ -553,6 +622,7 @@ $logoWidth: 40;
   position: absolute;
   right: percentage(105 / $X_LARGE_SCREEN_WIDTH);
   bottom: percentage(42 / $X_LARGE_SCREEN_HEIGHT);
+  z-index: 1;
 
   @include largeScreenWidthLess() {
     position: static;
@@ -633,6 +703,12 @@ $logoWidth: 40;
   z-index: 1;
   transition: all 0.2s ease;
 
+  @include mediumScreenWidthOver {
+    &.white {
+      color: #fff;
+    }
+  }
+
   @include largeScreenWidthLess() {
     @include fontvw($fontSize);
 
@@ -668,6 +744,12 @@ $logoWidth: 40;
     &.hidden {
       min-width: inherit;
       min-height: inherit;
+    }
+  }
+
+  @include mediumScreenWidthOver {
+    &.white {
+      color: #fff;
     }
   }
 }

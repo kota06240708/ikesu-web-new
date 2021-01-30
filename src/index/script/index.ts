@@ -30,6 +30,7 @@ import { aboutRender, About } from '../../about/script';
     projectDetailRender();
     aboutRender();
 
+    // reactのレンダリングを待たせる
     await sleep(500);
 
     // 文字列をラップ
@@ -50,6 +51,7 @@ import { aboutRender, About } from '../../about/script';
     // hash値の場所に移動
     global.checkHashScroll(0.1);
 
+    //　hash値移動まで待たせる
     await sleep(200);
 
     // aboutのアニメーションデータをセット
@@ -81,6 +83,9 @@ import { aboutRender, About } from '../../about/script';
       async beforeLeave() {
         // 現在のページを離れる直前
 
+        // イベントを削除
+        about.removeHashScroll();
+
         // メニューが開いてない場合
         if (!header.isHeaderOpen) {
           header.addLoadingHeader();
@@ -110,9 +115,6 @@ import { aboutRender, About } from '../../about/script';
         // ヘッダーの色を分岐
         header.checkHeaderColor(barba.next);
 
-        // イベントを削除
-        about.removeHashScroll();
-
         console.log('afterEnter');
       },
       async after() {
@@ -122,7 +124,7 @@ import { aboutRender, About } from '../../about/script';
         projectDetailRender();
         aboutRender();
 
-        // イベントを初期化
+        // マウスイベントを初期化
         global.mouseRefresh();
 
         // hash値の場所に移動

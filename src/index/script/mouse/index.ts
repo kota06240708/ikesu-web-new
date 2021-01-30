@@ -3,7 +3,7 @@ import { makeArray } from '../../../shared/scripts/make-array';
 type TColor = 'white' | 'black';
 
 export class Mouse {
-  private $$body: HTMLElement;
+  public $$body: HTMLElement;
   private $$mouse: HTMLElement;
   private $$hovers: HTMLElement[];
 
@@ -80,8 +80,15 @@ export class Mouse {
 
   // urlでマウスの色を分岐
   public checkMouseColor(url: string): void {
+    const path = `${window.location.protocol}//${window.location.host}`;
+
+    const isTop = !!(url.replace(path, '') === '/');
+    const isProject = !!(
+      url.indexOf('project') !== -1 && url.indexOf('all') === -1
+    );
+
     // マウスの色を分岐
-    const isWhite = url.indexOf('project') !== -1 && url.indexOf('all') === -1;
+    const isWhite = isTop || isProject;
 
     if (isWhite) {
       this.updateMouseColor('white');

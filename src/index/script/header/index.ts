@@ -10,6 +10,7 @@ export class Header extends Global {
   private isHover: boolean;
 
   private $$headerWrap: HTMLElement;
+  private $$headingWraps: HTMLElement[];
   private $$headerInner: HTMLElement;
   private $$toggle: HTMLElement;
   private $$toggleLines: HTMLElement[];
@@ -20,6 +21,7 @@ export class Header extends Global {
     super();
 
     this.$$headerWrap = document.getElementById('js-header-wrap');
+    this.$$body = document.getElementById('js-body');
     this.$$headerInner = this.$$headerWrap.querySelector(
       '.js-header-inner'
     ) as HTMLElement;
@@ -186,13 +188,30 @@ export class Header extends Global {
 
   // ヘッダーの色を分岐
   public checkHeaderColor(url: string): void {
+    this.$$headingWraps = makeArray(
+      document.querySelectorAll('.js-heading-wrap')
+    );
+
+    const path = `${window.location.protocol}//${window.location.host}`;
+
+    const isTop = !!(url.replace(path, '') === '/');
+    const isProject = !!(
+      url.indexOf('project') !== -1 && url.indexOf('all') === -1
+    );
+
     // マウスの色を分岐
-    const isWhite = url.indexOf('project') !== -1 && url.indexOf('all') === -1;
+    const isWhite = isTop || isProject;
 
     if (isWhite) {
+      this.$$headingWraps.forEach((r: HTMLElement) => r.classList.add('hover'));
       this.$$headerInner.classList.add('white');
+      this.$$body.classList.add('black');
     } else {
+      this.$$headingWraps.forEach((r: HTMLElement) =>
+        r.classList.remove('hover')
+      );
       this.$$headerInner.classList.remove('white');
+      this.$$body.classList.remove('black');
     }
   }
 

@@ -1,8 +1,11 @@
 mixin heading({title, link})
-  .sw-heading-wrap
+  .js-heading-wrap.sw-heading-wrap.hover
     .sw-heading-inner
       a.js-hashs.js-hover.sw-heading-text-wrap(href=link) 
-        .sw-heading-text #{title}
+        .sw-heading-text-inner
+          .sw-heading-text #{title}
 
-        .sw-Heading-line
-          .sw-line
+          .sw-heading-line
+            .sw-line
+
+          .sw-heading-line-back

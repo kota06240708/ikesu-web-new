@@ -51,16 +51,6 @@ const Template: FC = (): ReactElement => {
           />
         </ul>
       </div>
-      <div className="sw-heading-wrap">
-        <div className="sw-heading-inner">
-          <a className="sw-heading-text-wrap" href="#">
-            <div className="sw-heading-text">All Projects</div>
-            <div className="sw-Heading-line">
-              <div className="sw-line"></div>
-            </div>
-          </a>
-        </div>
-      </div>
     </div>
   );
 };

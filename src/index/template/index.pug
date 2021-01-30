@@ -9,6 +9,18 @@ block main
   include /shared/templates/module/_heading
 
   .top-wrap
+    .top-kv-bg-wrap
+      .top-kv-bg-inner
+        .js-top-kv-wrap.top-kv-bg-contents
+          .js-top-kv-inner.top-kv-bg-contents-inner
+            .js-top-kv.top-kv-bg(style='background-image: url(/image/img_example_bg.png)')
+        .js-top-kv-wrap.top-kv-bg-contents
+          .js-top-kv-inner.top-kv-bg-contents-inner
+            .js-top-kv.top-kv-bg(style='background-image: url(/image/img_example_bg.png)')
+        .js-top-kv-wrap.top-kv-bg-contents
+          .js-top-kv-inner.top-kv-bg-contents-inner
+            .js-top-kv.top-kv-bg(style='background-image: url(/image/img_example_bg.png)')
+
     .top-kv-wrap
       h2.js-title.top-kv-title.top-kv-title--pc the creative
         br
@@ -24,6 +36,6 @@ block main
 
     .top-menu-wrap
       include /shared/templates/module/_menu
-      +menu(data.top.menu)
+      +menu(data.top.menu, 'white')
 
     +heading({title: 'Who We Are', link: '/about'})
