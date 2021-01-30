@@ -123,8 +123,10 @@ import { aboutRender, About } from '../../about/script';
           await header.close();
         }
 
-        text.coating();
+        about.setData();
+        about.active();
 
+        text.coating();
         text.active();
       }
     });

@@ -40,12 +40,12 @@ export class About extends Global {
 
   // アニメーションのデータを取得
   public setData(): void {
+    this.$$sections = makeArray(document.querySelectorAll('.js-about-section'));
+    this.$$aboutBg = document.getElementById('js-about-bg');
+
     if (this.$$sections.length === 0 && !this.$$aboutBg) {
       return;
     }
-
-    this.$$sections = makeArray(document.querySelectorAll('.js-about-section'));
-    this.$$aboutBg = document.getElementById('js-about-bg');
 
     this.data = this.$$sections.map((r: HTMLElement) => {
       return {
@@ -57,7 +57,7 @@ export class About extends Global {
   }
 
   public active(): void {
-    if (this.data.length === 0) {
+    if (this.$$sections.length === 0 && !this.$$aboutBg) {
       return;
     }
 
