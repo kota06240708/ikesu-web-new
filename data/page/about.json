@@ -4,24 +4,24 @@
       {
         "title": "what we can",
         "description": "",
-        "link": "/about/?test=ggg"
+        "link": "#can"
       },
       {
         "title": "contact",
         "description": "",
-        "link": "#"
+        "link": "#contact"
       }
     ],
     "contactMenu": [
       {
         "title": "PROJECTS",
         "description": "",
-        "link": "#"
+        "link": "/project"
       },
       {
         "title": "CONTACT",
         "description": "",
-        "link": "#"
+        "link": "#contact"
       }
     ],
     "can": [

@@ -18,7 +18,7 @@
       },
       {
         "title": "creators",
-        "link": "/about"
+        "link": "/about/#member"
       },
       {
         "title": "projects",
@@ -26,7 +26,7 @@
       },
       {
         "title": "contact",
-        "link": "/about"
+        "link": "/about/#contact"
       }
     ]
   }
