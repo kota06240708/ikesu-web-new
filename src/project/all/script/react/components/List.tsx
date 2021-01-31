@@ -38,7 +38,7 @@ const List: FC<TProps> = ({
         </div>
         <div className="all-contents-label-wrap">
           <span className="all-contents-label-number">{`${zeroPadding(
-            String(index)
+            String(index + 1)
           )} -`}</span>
           <p className="all-contents-label">{`${type} / ${role}`}</p>
         </div>

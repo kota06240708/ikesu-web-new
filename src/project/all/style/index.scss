@@ -154,6 +154,10 @@
   }
 }
 
+.all-contents-label {
+  text-transform: uppercase;
+}
+
 .all-contents-label-number {
   white-space: nowrap;
   margin-right: getvw(8, $X_LARGE_SCREEN_WIDTH);
