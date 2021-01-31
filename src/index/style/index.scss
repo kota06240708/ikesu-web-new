@@ -93,6 +93,7 @@ body {
 
 .top-menu-wrap {
   @include largeScreenWidthLess() {
+    background-color: $COLOR_BG_PRIMARY;
     padding: getvw(50) getvw(30) getvw(200);
   }
 }

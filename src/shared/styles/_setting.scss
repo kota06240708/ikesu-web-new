@@ -62,10 +62,8 @@ li {
 
   cursor: none;
 
-  @include mediumScreenWidthOver { 
-    &.black {
-      background-color: #000;
-    }
+  &.black {
+    background-color: #000;
   }
 }
 

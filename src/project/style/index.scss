@@ -10,6 +10,7 @@
   padding: 115px percentage(200 / $X_LARGE_SCREEN_WIDTH) 40px;
 
   @include largeScreenWidthLess() {
+    background-color: $COLOR_BG_PRIMARY;
     padding: getvw(120) 0 0;
   }
 }
