@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import List from './components/List';
 
@@ -21,10 +21,6 @@ type TProps = {
 // Pageを新しく作る際はこちらのテンプレートのコードをコピペしてください。
 
 const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
-  useEffect(() => {
-    console.log('発火 ===================================>', data);
-  }, []);
-
   const { master, members } = data;
 
   const member = members.contents.map((r: TMember, i: number) => {
