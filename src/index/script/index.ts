@@ -12,17 +12,19 @@ import { projectAllRender } from '../../project/all/script';
 import { projectDetailRender, Detail } from '../../project/detail/script';
 import { aboutRender, About } from '../../about/script';
 
-// import Repository from './api';
+import { getAllData } from './api/connection';
 
 (() => {
   window.addEventListener('DOMContentLoaded', async () => {
+    const data = await getAllData();
+
     await sleep(1500);
 
     // reactのレンダリング
     projectRender();
     projectAllRender();
     projectDetailRender();
-    aboutRender();
+    aboutRender(data);
 
     // reactのレンダリングを待たせる
     await sleep(500);
@@ -161,7 +163,7 @@ import { aboutRender, About } from '../../about/script';
         projectRender();
         projectAllRender();
         projectDetailRender();
-        aboutRender();
+        aboutRender(data);
 
         // マウスイベントを初期化
         global.mouseRefresh();

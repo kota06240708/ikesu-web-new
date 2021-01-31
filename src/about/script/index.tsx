@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, FC } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import { makeArray } from '../../shared/scripts/make-array';
@@ -7,8 +7,13 @@ import { offsetTop } from '../../shared/scripts/offset';
 import smoothscroll from '../../shared/scripts/smooth-scroll';
 
 import Global from '../../index/script/global';
+import { TAllData } from '../../index/script/api';
 
 import Index from './react';
+
+type TProps = {
+  data: TAllData;
+};
 
 type TData = {
   el: HTMLElement;
@@ -16,13 +21,13 @@ type TData = {
   color: string;
 };
 
-const Layouts: () => ReactElement = (): ReactElement => {
-  return <Index />;
+const Layouts: FC<TProps> = ({ data }: TProps): ReactElement => {
+  return <Index data={data} />;
 };
 
-export const aboutRender: () => void = () => {
+export const aboutRender: (data: TAllData) => void = (data: TAllData) => {
   const rootEl: HTMLElement = document.getElementById('about-app');
-  rootEl ? ReactDOM.render(<Layouts />, rootEl) : null;
+  rootEl ? ReactDOM.render(<Layouts data={data} />, rootEl) : null;
 };
 
 hot(Layouts);
