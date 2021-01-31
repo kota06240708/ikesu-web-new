@@ -12,7 +12,7 @@ import Contents from './components/Contents';
 
 const Template: FC = (): ReactElement => {
   useEffect(() => {
-    console.log('発火 ===================================>');
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -28,7 +28,7 @@ const Template: FC = (): ReactElement => {
             </div>
           </div>
           <div className="detail-kv">
-            <div className="detail-kv-heading">
+            <div className="js-fade detail-kv-heading">
               <div className="detail-kv-label-wrap">
                 <span className="detail-kv-label-number">01 -</span>
                 <p className="detail-kv-label">INSTALLATION</p>
@@ -37,11 +37,15 @@ const Template: FC = (): ReactElement => {
                 / PROJECT MANAGEMENT & DIRECTION
               </p>
             </div>
-            <h2 className="detail-kv-heading-name">PROJECT NAME</h2>
+            <div className="detail-kv-heading-name">
+              <h2 className="js-detail-name detail-kv-heading-name-inner">
+                PROJECT NAME
+              </h2>
+            </div>
           </div>
         </div>
         <div className="detail-heading-wrap">
-          <p className="detail-heading-text">
+          <p className="js-fade detail-heading-text">
             2018年9月に行われた。新型Audi A8/A7 Sportback
             <br />
             の日本発売を記念したプレミアムイベ ント。
@@ -61,7 +65,7 @@ const Template: FC = (): ReactElement => {
             src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&amp;origin=http://example.com"
           />
         </div>
-        <p className="detail-video-text">
+        <p className="js-fade detail-video-text">
           最新テクノロジーを搭載した Audi A8 /
           A7の革新的な世界、モダンプレミアムの世界観を
           体験できる本イベントでは、
@@ -94,7 +98,7 @@ const Template: FC = (): ReactElement => {
           description=""
         />
       </div>
-      <div className="detail-credit-wrap">
+      <div className="js-fade detail-credit-wrap">
         <div className="detail-credit-inner">
           <div className="detail-credit">
             <h3 className="detail-credit-title">Client : </h3>
@@ -123,7 +127,10 @@ const Template: FC = (): ReactElement => {
       <div className="detail-nav-wrap">
         <div className="detail-nav-inner">
           <div className="detail-nav-contents detail-nav-link-wrap--left">
-            <a className="detail-nav-link-wrap" href="#">
+            <a
+              className="js-hover detail-nav-link-wrap"
+              href="/project/detail/?id=12"
+            >
               <div className="detail-nav-link-inner">
                 <div className="detail-nav-link">
                   <span className="sw-line"></span>
@@ -132,12 +139,15 @@ const Template: FC = (): ReactElement => {
             </a>
           </div>
           <div className="detail-nav-contents detail-nav-link-wrap--center">
-            <a className="detail-nav-link-text" href="#">
+            <a className="js-hover detail-nav-link-text" href="/project/all">
               project list
             </a>
           </div>
           <div className="detail-nav-contents detail-nav-link-wrap--right">
-            <a className="detail-nav-link-wrap" href="#">
+            <a
+              className="js-hover detail-nav-link-wrap"
+              href="/project/detail/?id=121"
+            >
               <div className="detail-nav-link-inner">
                 <div className="detail-nav-link">
                   <span className="sw-line"></span>

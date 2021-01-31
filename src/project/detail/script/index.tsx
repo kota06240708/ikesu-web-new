@@ -14,3 +14,25 @@ export const projectDetailRender: () => void = () => {
 };
 
 hot(Layouts);
+
+export class Detail {
+  private $$name: HTMLElement;
+
+  constructor() {
+    this.$$name = document.querySelector('.js-detail-name');
+  }
+
+  public close(): void {
+    if (!this.$$name) return;
+
+    this.$$name.classList.remove('open');
+  }
+
+  public open(): void {
+    this.$$name = document.querySelector('.js-detail-name');
+
+    if (!this.$$name) return;
+
+    this.$$name.classList.add('open');
+  }
+}

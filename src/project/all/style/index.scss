@@ -7,7 +7,7 @@
 
 .all-inner {
   width: 100%;
-  padding: 115px percentage(140 / $X_LARGE_SCREEN_WIDTH) 360px;
+  padding: 115px percentage(180 / $X_LARGE_SCREEN_WIDTH) 360px;
 
   @include largeScreenWidthLess() {
     padding: getvw(120) getvw(40);

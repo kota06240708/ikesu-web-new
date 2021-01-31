@@ -27,7 +27,7 @@ const Contents: FC<TProps> = ({
     ) : null;
 
   return (
-    <div className={`detail-contents ${imagePosition}`}>
+    <div className={`js-fade detail-contents ${imagePosition}`}>
       <div className="detail-contents-image-wrap">
         <img className="detail-contents-image" src={imgURL} alt="" />
       </div>

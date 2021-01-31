@@ -13,6 +13,7 @@ type TProps = {
   type: string;
   imgURL: string;
   href: string;
+  onHover: () => void;
 };
 
 // ==========================================
@@ -25,10 +26,11 @@ const List: FC<TProps> = ({
   imgURL,
   href,
   role,
-  type
+  type,
+  onHover
 }: TProps): ReactElement => {
   return (
-    <li className="project-contents">
+    <li className="project-contents" onMouseOver={() => onHover()}>
       <a
         className="project-contents-link"
         href={href}

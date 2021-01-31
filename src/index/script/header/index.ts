@@ -195,23 +195,30 @@ export class Header extends Global {
     const path = `${window.location.protocol}//${window.location.host}`;
 
     const isTop = !!(url.replace(path, '') === '/');
-    const isProject = !!(
-      url.indexOf('project') !== -1 && url.indexOf('all') === -1
-    );
+    const isAll = url.indexOf('all') !== -1;
+    const isProject = !!(url.indexOf('project') !== -1 && !isAll);
 
     // マウスの色を分岐
     const isWhite = isTop || isProject;
+
+    console.log(url);
 
     if (isWhite) {
       this.$$headingWraps.forEach((r: HTMLElement) => r.classList.add('hover'));
       this.$$headerInner.classList.add('white');
       this.$$body.classList.add('black');
+      this.$$body.classList.remove('white');
     } else {
       this.$$headingWraps.forEach((r: HTMLElement) =>
         r.classList.remove('hover')
       );
       this.$$headerInner.classList.remove('white');
       this.$$body.classList.remove('black');
+      this.$$body.classList.remove('white');
+    }
+
+    if (isAll) {
+      this.$$body.classList.add('white');
     }
   }
 

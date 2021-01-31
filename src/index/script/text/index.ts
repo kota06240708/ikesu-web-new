@@ -27,6 +27,16 @@ export class Text extends Global {
     this.titles = makeArray(document.querySelectorAll('.js-title'));
     this.fade = makeArray(document.querySelectorAll('.js-fade'));
 
+    if (this.fade.length !== 0) {
+      this.fade.forEach((r: HTMLElement) => {
+        this.data.push({
+          el: r,
+          top: offsetTop(r),
+          isActive: false
+        });
+      });
+    }
+
     if (!this.titles) {
       return;
     } else if (this.titles.length === 0) {
@@ -77,20 +87,6 @@ export class Text extends Global {
         top: offsetTop(r),
         isActive: false
       };
-    });
-
-    if (!this.fade) {
-      return;
-    } else if (this.fade.length === 0) {
-      return;
-    }
-
-    this.fade.forEach((r: HTMLElement) => {
-      this.data.push({
-        el: r,
-        top: offsetTop(r),
-        isActive: false
-      });
     });
   }
 

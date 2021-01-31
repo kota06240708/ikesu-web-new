@@ -9,27 +9,13 @@ import { sleep } from '../../shared/scripts/sleep';
 
 import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
-import { projectDetailRender } from '../../project/detail/script';
+import { projectDetailRender, Detail } from '../../project/detail/script';
 import { aboutRender, About } from '../../about/script';
 
 // import Repository from './api';
 
 (() => {
   window.addEventListener('DOMContentLoaded', async () => {
-    const loading = new Loading();
-    const text = new Text();
-    const header = new Header();
-    const barba = new Barba({ header });
-    const global = new Global();
-    const about = new About();
-    const top = new Top();
-
-    const isTop: () => boolean = () => {
-      const path = `${window.location.protocol}//${window.location.host}`;
-
-      return !!(window.location.href.replace(path, '') === '/');
-    };
-
     await sleep(1500);
 
     // reactのレンダリング
@@ -40,6 +26,25 @@ import { aboutRender, About } from '../../about/script';
 
     // reactのレンダリングを待たせる
     await sleep(500);
+
+    const header = new Header();
+    const barba = new Barba({ header });
+    const loading = new Loading();
+    const text = new Text();
+    const global = new Global();
+    const about = new About();
+    const top = new Top();
+    const detail = new Detail();
+
+    const isTop: () => boolean = () => {
+      const path = `${window.location.protocol}//${window.location.host}`;
+
+      return !!(window.location.href.replace(path, '') === '/');
+    };
+
+    const isAbout: () => boolean = () => {
+      return !!window.location.href.match('about');
+    };
 
     // 文字列をラップ
     text.coating();
@@ -79,6 +84,7 @@ import { aboutRender, About } from '../../about/script';
     // init
     header.init();
     text.active();
+    detail.open();
 
     // ハッシュスクロール発火
     about.onClickHashScroll();
@@ -127,7 +133,11 @@ import { aboutRender, About } from '../../about/script';
       afterLeave() {
         // 現在のページを離れた直後
 
-        console.log('afterLeave');
+        if (!isAbout()) {
+          scrollTo(0, 0);
+        }
+
+        detail.close();
       },
       beforeEnter() {
         // 次のページを表示する直前
@@ -168,6 +178,9 @@ import { aboutRender, About } from '../../about/script';
 
         await sleep(100);
 
+        // リンクを初期化
+        barba.refresh();
+
         // ページ遷移アニメーション分岐
         if (!header.isHeaderOpen) {
           await global.bgClose();
@@ -191,6 +204,8 @@ import { aboutRender, About } from '../../about/script';
 
         text.coating();
         text.active();
+
+        detail.open();
       }
     });
   });

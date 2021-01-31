@@ -87,8 +87,6 @@ export class Barba extends Global {
           },
           async after() {
             // 最後
-            _this.refresh();
-
             after ? await after() : null;
           }
         }
@@ -111,7 +109,7 @@ export class Barba extends Global {
   }
 
   // イベント再発火
-  private refresh(): void {
+  public refresh(): void {
     this.onRemoveListener();
 
     this.$$links = makeArray(document.querySelectorAll('a[href]'));

@@ -224,8 +224,12 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 0;
+  transition: opacity 0.2s linear;
+  opacity: 1;
 
   &::before {
     content: '';
@@ -236,5 +240,9 @@
     background: linear-gradient(
       90deg
       ,rgba(0,0,0,.8) 25%,rgba(0,0,0,.6) 50%,rgba(0,0,0,.4) 75%,rgba(0,0,0,.2) 90%,transparent);
+  }
+
+  &.hidden {
+    opacity: 0;
   }
 }
