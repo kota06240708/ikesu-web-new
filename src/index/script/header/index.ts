@@ -197,11 +197,10 @@ export class Header extends Global {
     const isTop = !!(url.replace(path, '') === '/');
     const isAll = url.indexOf('all') !== -1;
     const isProject = !!(url.indexOf('project') !== -1 && !isAll);
+    const isPassword = !!(url.indexOf('password') !== -1);
 
     // マウスの色を分岐
-    const isWhite = isTop || isProject;
-
-    console.log(url);
+    const isWhite = isTop || isProject || isPassword;
 
     if (isWhite) {
       this.$$headingWraps.forEach((r: HTMLElement) => r.classList.add('hover'));

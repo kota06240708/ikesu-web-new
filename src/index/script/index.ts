@@ -11,6 +11,7 @@ import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
 import { projectDetailRender, Detail } from '../../project/detail/script';
 import { aboutRender, About } from '../../about/script';
+import { Password } from '../../password/script';
 
 import { getAllData } from './api/connection';
 
@@ -35,6 +36,7 @@ import { getAllData } from './api/connection';
     const about = new About();
     const top = new Top();
     const detail = new Detail();
+    const password = new Password();
 
     const isTop: () => boolean = () => {
       const path = `${window.location.protocol}//${window.location.host}`;
@@ -44,6 +46,26 @@ import { getAllData } from './api/connection';
 
     const isAbout: () => boolean = () => {
       return !!window.location.href.match('about');
+    };
+
+    const isProject: () => boolean = () => {
+      return !!window.location.href.match('project');
+    };
+
+    const checkProduct = () => {
+      if (isProject() && data.auth.isAuth) {
+        const pass = localStorage.getItem('password');
+
+        if (!pass) {
+          window.location.href = '/password';
+          return;
+        }
+
+        if (!password.checkPassword(pass)) {
+          window.location.href = '/password';
+          return;
+        }
+      }
     };
 
     // 文字列をラップ
@@ -84,6 +106,9 @@ import { getAllData } from './api/connection';
         : '/image/img_example_bg.png'
     });
 
+    // プロダクトページのチェック
+    checkProduct();
+
     // ローディング解除
     await loading.end();
 
@@ -91,6 +116,7 @@ import { getAllData } from './api/connection';
     header.init();
     text.active();
     detail.open();
+    password.init();
 
     // ハッシュスクロール発火
     about.onClickHashScroll();
@@ -124,6 +150,7 @@ import { getAllData } from './api/connection';
 
         // イベントを削除
         about.removeHashScroll();
+        password.remove();
 
         // メニューが開いてない場合
         if (!header.isHeaderOpen) {
@@ -146,6 +173,9 @@ import { getAllData } from './api/connection';
         detail.close();
       },
       beforeEnter() {
+        // プロダクトページのチェック
+        checkProduct();
+
         // 次のページを表示する直前
 
         console.log('beforeEnter');

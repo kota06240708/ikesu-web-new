@@ -86,9 +86,10 @@ export class Mouse {
     const isProject = !!(
       url.indexOf('project') !== -1 && url.indexOf('all') === -1
     );
+    const isPassword = !!(url.indexOf('password') !== -1);
 
     // マウスの色を分岐
-    const isWhite = isTop || isProject;
+    const isWhite = isTop || isProject || isPassword;
 
     if (isWhite) {
       this.updateMouseColor('white');

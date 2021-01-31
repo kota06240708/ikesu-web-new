@@ -49,6 +49,9 @@
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "browser-sync": "^2.26.13",
     "cross-env": "^7.0.2",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
+    "crypto-js": "^4.0.0",
     "css-declaration-sorter": "5.1.2",
     "css-mqpacker": "^7.0.0",
     "dotenv-webpack": "^6.0.0",
@@ -114,10 +117,14 @@
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.4.0"
   },
+  "browser": {
+    "crypto": false
+  },
   "dependencies": {
     "@barba/css": "^2.1.15",
     "@barba/prefetch": "^2.1.10",
     "@hot-loader/react-dom": "^17.0.0",
+    "@types/crypto-js": "^4.0.1",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "gsap": "^3.5.1",
