@@ -27,6 +27,9 @@ export class Text extends Global {
     this.titles = makeArray(document.querySelectorAll('.js-title'));
     this.fade = makeArray(document.querySelectorAll('.js-fade'));
 
+    // データwp初期化
+    this.data = [];
+
     if (this.fade.length !== 0) {
       this.fade.forEach((r: HTMLElement) => {
         this.data.push({
@@ -43,10 +46,7 @@ export class Text extends Global {
       return;
     }
 
-    // データwp初期化
-    this.data = [];
-
-    this.titles.forEach((r: HTMLElement, i: number) => {
+    this.titles.forEach((r: HTMLElement) => {
       // brで文字列を分解
       const reg = new RegExp(`<(.*?)>`);
       const txtArr = r.innerHTML
@@ -82,11 +82,11 @@ export class Text extends Global {
       );
 
       // アニメーションで使うデータをセット
-      this.data[i] = {
+      this.data.push({
         el: r,
         top: offsetTop(r),
         isActive: false
-      };
+      });
     });
   }
 
