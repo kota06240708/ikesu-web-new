@@ -18,16 +18,14 @@ import { getAllData } from './api/connection';
   window.addEventListener('DOMContentLoaded', async () => {
     const data = await getAllData();
 
-    await sleep(1500);
-
     // reactのレンダリング
-    projectRender();
-    projectAllRender();
-    projectDetailRender();
+    projectRender(data);
+    projectAllRender(data);
+    projectDetailRender(data);
     aboutRender(data);
 
     // reactのレンダリングを待たせる
-    await sleep(500);
+    await sleep(1000);
 
     const header = new Header();
     const barba = new Barba({ header });
@@ -160,9 +158,9 @@ import { getAllData } from './api/connection';
       },
       async after() {
         // reactのレンダリング
-        projectRender();
-        projectAllRender();
-        projectDetailRender();
+        projectRender(data);
+        projectAllRender(data);
+        projectDetailRender(data);
         aboutRender(data);
 
         // マウスイベントを初期化

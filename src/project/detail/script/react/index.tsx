@@ -2,17 +2,23 @@ import React, { FC, ReactElement, useEffect } from 'react';
 
 import Contents from './components/Contents';
 
+import { TAllData } from '../../../../index/script/api';
+
 // ==========================================
 // Type
 // ==========================================
+
+type TProps = {
+  data: TAllData;
+};
 
 // ==========================================
 // View
 // ==========================================
 
-const Template: FC = (): ReactElement => {
+const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    console.log(data);
   }, []);
 
   return (

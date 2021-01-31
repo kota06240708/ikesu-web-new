@@ -2,9 +2,15 @@ import React, { FC, ReactElement, useState } from 'react';
 
 import List from './components/List';
 
+import { TAllData, TProduct } from '../../../index/script/api';
+
 // ==========================================
 // Type
 // ==========================================
+
+type TProps = {
+  data: TAllData;
+};
 
 // ==========================================
 // View
@@ -12,26 +18,43 @@ import List from './components/List';
 
 // Pageを新しく作る際はこちらのテンプレートのコードをコピペしてください。
 
-const Template: FC = (): ReactElement => {
+const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
   const [index, setIndex] = useState<number>(0);
+
+  const { products } = data;
+  const { contents } = products;
+
+  const bg = contents.map((r: TProduct, i: number) => {
+    const { image } = r;
+    return (
+      <div
+        key={i}
+        className={`project-bg ${index !== i ? 'hidden' : ''}`}
+        style={{ backgroundImage: `url(${image.url})` }}
+      />
+    );
+  });
+
+  const list = contents.map((r: TProduct, i: number) => {
+    const { title, role, type, id, image } = r;
+    return (
+      <List
+        key={i}
+        onHover={() => setIndex(i)}
+        title={title}
+        role={role}
+        index={i}
+        type={type[0]}
+        href={`/project/detail/?id=${id}`}
+        imgURL={image.url}
+      />
+    );
+  });
 
   return (
     <div className="project-wrap">
       <div className="project-bg-wrap">
-        <div className="project-bg-inner">
-          <div
-            className={`project-bg ${index !== 0 ? 'hidden' : ''}`}
-            style={{ backgroundImage: `url(/image/img_example_bg.png)` }}
-          />
-          <div
-            className={`project-bg ${index !== 1 ? 'hidden' : ''}`}
-            style={{ backgroundImage: `url(/image/img_example_02.png)` }}
-          />
-          <div
-            className={`project-bg ${index !== 2 ? 'hidden' : ''}`}
-            style={{ backgroundImage: `url(/image/img_bg.png)` }}
-          />
-        </div>
+        <div className="project-bg-inner">{bg}</div>
       </div>
       <div className="project-inner">
         <div className="project-heading">
@@ -46,41 +69,7 @@ const Template: FC = (): ReactElement => {
             AR, Web development, AI and so on as a project manger.
           </p>
         </div>
-        <ul className="project-contents-wrap">
-          <List
-            onHover={() => {
-              setIndex(0);
-            }}
-            title="PROJECT NAME"
-            role="PROJECT MANAGEMENT & DIRECTION"
-            index={1}
-            type="INSTALLATION"
-            href={`/project/detail/?id=1211`}
-            imgURL="/image/img_example_bg.png"
-          />
-          <List
-            onHover={() => {
-              setIndex(1);
-            }}
-            title="PROJECT NAME"
-            role="PROJECT MANAGEMENT & DIRECTION"
-            index={1}
-            type="INSTALLATION"
-            href={`/project/detail/?id=1211`}
-            imgURL="/image/img_example_02.png"
-          />
-          <List
-            onHover={() => {
-              setIndex(2);
-            }}
-            title="PROJECT NAME"
-            role="PROJECT MANAGEMENT & DIRECTION"
-            index={1}
-            type="INSTALLATION"
-            href={`/project/detail/?id=1211`}
-            imgURL="/image/img_bg.png"
-          />
-        </ul>
+        <ul className="project-contents-wrap">{list}</ul>
       </div>
     </div>
   );

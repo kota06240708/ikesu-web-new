@@ -2,17 +2,23 @@ import React, { FC, ReactElement, useEffect } from 'react';
 
 import List from './components/List';
 
+import { TAllData } from '../../../../index/script/api';
+
 // ==========================================
 // Type
 // ==========================================
+
+type TProps = {
+  data: TAllData;
+};
 
 // ==========================================
 // View
 // ==========================================
 
-const Template: FC = (): ReactElement => {
+const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
   useEffect(() => {
-    console.log('発火 ===================================>');
+    console.log(data);
   }, []);
 
   return (
