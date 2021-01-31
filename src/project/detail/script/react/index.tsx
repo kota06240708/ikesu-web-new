@@ -1,8 +1,12 @@
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, { FC, ReactElement, useEffect, useState, Fragment } from 'react';
 
 import Contents from './components/Contents';
 
-import { TAllData } from '../../../../index/script/api';
+import { TAllData, TProduct, TProductBody } from '../../../../index/script/api';
+
+import { getUrlQueries } from '../../../../shared/scripts/query';
+import { zeroPadding } from '../../../../shared/scripts/zero-padding';
+import { nl2br } from '../../../../shared/scripts/nl2br';
 
 // ==========================================
 // Type
@@ -17,11 +21,103 @@ type TProps = {
 // ==========================================
 
 const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
+  const { products } = data;
+  const { contents } = products;
+
+  const [filterData, setFilterData] = useState<TProduct>(null);
+  const [index, setIndex] = useState<number>(-1);
+
+  // idチェック
   useEffect(() => {
-    console.log(data);
+    const query = getUrlQueries();
+
+    if (!query.id) {
+      window.location.href = '/';
+      return;
+    }
+    const filter = contents.filter((r: TProduct) => r.id === query.id);
+
+    if (filter.length === 0) {
+      window.location.href = '/';
+      return;
+    }
+
+    setIndex(contents.findIndex((r: TProduct) => r.id === query.id));
+    setFilterData(filter[0]);
   }, []);
 
-  return (
+  const content = () => {
+    if (!filterData) {
+      return null;
+    } else if (!filterData.body) {
+      return null;
+    } else if (filterData.body.length === 0) {
+      return null;
+    }
+
+    return filterData.body.map((body: TProductBody, i: number) => {
+      return (
+        <Contents
+          key={i}
+          imgURL={body.image.url}
+          imagePosition={body.description ? body.imagePosition[0] : 'normal'}
+          description={body.description}
+        />
+      );
+    });
+  };
+
+  const next = () => {
+    const nextIndex = index + 1;
+
+    if (!filterData) {
+      return null;
+    } else if (nextIndex === contents.length) {
+      return null;
+    }
+
+    return (
+      <div className="detail-nav-contents detail-nav-link-wrap--right">
+        <a
+          className="js-hover detail-nav-link-wrap"
+          href={`/project/detail/?id=${contents[nextIndex].id}`}
+        >
+          <div className="detail-nav-link-inner">
+            <div className="detail-nav-link">
+              <span className="sw-line"></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    );
+  };
+
+  const prev = () => {
+    const prevIndex = index - 1;
+
+    if (!filterData) {
+      return null;
+    } else if (index === 0) {
+      return null;
+    }
+
+    return (
+      <div className="detail-nav-contents detail-nav-link-wrap--left">
+        <a
+          className="js-hover detail-nav-link-wrap"
+          href={`/project/detail/?id=${prevIndex}`}
+        >
+          <div className="detail-nav-link-inner">
+            <div className="detail-nav-link">
+              <span className="sw-line"></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    );
+  };
+
+  const wrap = filterData ? (
     <div className="detail-wrap">
       <div className="detail-inner">
         <div className="detail-kv-wrap">
@@ -36,29 +132,23 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
           <div className="detail-kv">
             <div className="js-fade detail-kv-heading">
               <div className="detail-kv-label-wrap">
-                <span className="detail-kv-label-number">01 -</span>
-                <p className="detail-kv-label">INSTALLATION</p>
+                <span className="detail-kv-label-number">{`${zeroPadding(
+                  String(index + 1)
+                )} -`}</span>
+                <p className="detail-kv-label">{filterData.type[0]}</p>
               </div>
-              <p className="detail-kv-heading-text">
-                / PROJECT MANAGEMENT & DIRECTION
-              </p>
+              <p className="detail-kv-heading-text">{`/ ${filterData.role}`}</p>
             </div>
             <div className="detail-kv-heading-name">
               <h2 className="js-detail-name detail-kv-heading-name-inner">
-                PROJECT NAME
+                {filterData.title}
               </h2>
             </div>
           </div>
         </div>
         <div className="detail-heading-wrap">
           <p className="js-fade detail-heading-text">
-            2018年9月に行われた。新型Audi A8/A7 Sportback
-            <br />
-            の日本発売を記念したプレミアムイベ ント。
-            <br />
-            アウディが持つ、「モダンプレミアム」な世界を演出するため、
-            <br />
-            インタラクティブなデジタルコンテンツの企画、制作を担当しました。
+            {nl2br(filterData.description)}
           </p>
         </div>
       </div>
@@ -68,103 +158,49 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
             className="detail-video"
             width="640"
             height="360"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&amp;origin=http://example.com"
+            src={`https://www.youtube.com/embed/${filterData.movie}?autoplay=1&amp;origin=http://example.com`}
           />
         </div>
         <p className="js-fade detail-video-text">
-          最新テクノロジーを搭載した Audi A8 /
-          A7の革新的な世界、モダンプレミアムの世界観を
-          体験できる本イベントでは、
-          ワープしていくような激しい光の線が音とともに来場者をSpace for
-          Progressの世界へい ざなう Cube Entrance。
+          {nl2br(filterData.movieText)}
         </p>
       </div>
-      <div className="detail-contents-wrap">
-        <Contents
-          imgURL="/image/img_example_bg.png"
-          imagePosition="right"
-          description="最新テクノロジーを搭載した Audi A8 /
-          A7の革新的な世界、モダンプレミアムの世界観を
-          体験できる本イベントでは、
-          ワープしていくような激しい光の線が音とともに来場者をSpace for
-          Progressの世界へい ざなう Cube Entrance。"
-        />
-        <Contents
-          imgURL="/image/img_example_bg.png"
-          imagePosition="left"
-          description="最新テクノロジーを搭載した Audi A8 /
-          A7の革新的な世界、モダンプレミアムの世界観を
-          体験できる本イベントでは、
-          ワープしていくような激しい光の線が音とともに来場者をSpace for
-          Progressの世界へい ざなう Cube Entrance。"
-        />
-        <Contents
-          imgURL="/image/img_example_bg.png"
-          imagePosition="normal"
-          description=""
-        />
-      </div>
+      <div className="detail-contents-wrap">{content()}</div>
       <div className="js-fade detail-credit-wrap">
         <div className="detail-credit-inner">
           <div className="detail-credit">
             <h3 className="detail-credit-title">Client : </h3>
-            <p className="detail-credit-text">
-              Audi Japan KK | アウディジャパン株式会社
-            </p>
+            <p className="detail-credit-text">{filterData.client}</p>
           </div>
           <div className="detail-credit">
             <h3 className="detail-credit-title">Category : </h3>
-            <p className="detail-credit-text">Digital Installation</p>
+            <p className="detail-credit-text">{filterData.category}</p>
           </div>
           <div className="detail-credit">
             <h3 className="detail-credit-title">Product field：</h3>
-            <p className="detail-credit-text">
-              企画・システム設計・デザイン・アプリケーション開発
-            </p>
+            <p className="detail-credit-text">{filterData.field}</p>
           </div>
           <div className="detail-credit">
             <h3 className="detail-credit-title">Product field：</h3>
-            <p className="detail-credit-text">
-              PM/ディレクター1名、テクニカルディレクター1名、デザイナー2名、サウンドクリエーター1名、フロントエンドエンジニア1名、システムエンジニア4名
-            </p>
+            <p className="detail-credit-text">{filterData.member}</p>
           </div>
         </div>
       </div>
       <div className="detail-nav-wrap">
         <div className="detail-nav-inner">
-          <div className="detail-nav-contents detail-nav-link-wrap--left">
-            <a
-              className="js-hover detail-nav-link-wrap"
-              href="/project/detail/?id=12"
-            >
-              <div className="detail-nav-link-inner">
-                <div className="detail-nav-link">
-                  <span className="sw-line"></span>
-                </div>
-              </div>
-            </a>
-          </div>
+          {prev()}
           <div className="detail-nav-contents detail-nav-link-wrap--center">
             <a className="js-hover detail-nav-link-text" href="/project/all">
               project list
             </a>
           </div>
-          <div className="detail-nav-contents detail-nav-link-wrap--right">
-            <a
-              className="js-hover detail-nav-link-wrap"
-              href="/project/detail/?id=121"
-            >
-              <div className="detail-nav-link-inner">
-                <div className="detail-nav-link">
-                  <span className="sw-line"></span>
-                </div>
-              </div>
-            </a>
-          </div>
+          {next()}
         </div>
       </div>
     </div>
-  );
+  ) : null;
+
+  return <Fragment>{wrap}</Fragment>;
 };
 
 export default Template;

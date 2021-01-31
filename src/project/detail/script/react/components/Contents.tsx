@@ -21,10 +21,13 @@ const Contents: FC<TProps> = ({
   imagePosition,
   imgURL
 }: TProps): ReactElement => {
-  const descriptionEl =
+  const descriptionEl = description ? (
     description !== '' ? (
-      <p className="detail-contents-text">{nl2br(description)}</p>
-    ) : null;
+      <p className="detail-contents-text">
+        {description ? nl2br(description) : null}
+      </p>
+    ) : null
+  ) : null;
 
   return (
     <div className={`js-fade detail-contents ${imagePosition}`}>

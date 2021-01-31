@@ -73,9 +73,15 @@ import { getAllData } from './api/connection';
 
     // topのアニメーションの準備
     top.setTopData({
-      image01: '/image/img_example_bg.png',
-      image02: '/image/img_example_02.png',
-      image03: '/image/img_bg.png'
+      image01: data.products.contents[0]
+        ? data.products.contents[0].image.url
+        : '/image/img_example_bg.png',
+      image02: data.products.contents[1]
+        ? data.products.contents[1].image.url
+        : '/image/img_example_bg.png',
+      image03: data.products.contents[2]
+        ? data.products.contents[2].image.url
+        : '/image/img_example_bg.png'
     });
 
     // ローディング解除
@@ -171,9 +177,15 @@ import { getAllData } from './api/connection';
 
         // topのアニメーションの準備
         top.setTopData({
-          image01: '/image/img_example_bg.png',
-          image02: '/image/img_example_02.png',
-          image03: '/image/img_bg.png'
+          image01: data.products.contents[0]
+            ? data.products.contents[0].image.url
+            : '/image/img_example_bg.png',
+          image02: data.products.contents[1]
+            ? data.products.contents[1].image.url
+            : '/image/img_example_bg.png',
+          image03: data.products.contents[2]
+            ? data.products.contents[2].image.url
+            : '/image/img_example_bg.png'
         });
 
         await sleep(100);
