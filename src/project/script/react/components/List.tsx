@@ -32,7 +32,7 @@ const List: FC<TProps> = ({
   return (
     <li className="project-contents" onMouseOver={() => onHover()}>
       <a
-        className="project-contents-link"
+        className="js-hover project-contents-link"
         href={href}
         style={{ backgroundImage: `url(${imgURL})` }}
       >

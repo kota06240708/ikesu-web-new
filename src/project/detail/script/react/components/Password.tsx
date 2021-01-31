@@ -16,7 +16,7 @@ const Password: FC = (): ReactElement => {
       <div className="detail-password-bg"></div>
       <div className="detail-password">
         <p className="detail-password-text">enter the key to projects</p>
-        <input className="detail-password-input" name="" type="text" />
+        <input className="js-hover detail-password-input" name="" type="text" />
       </div>
     </div>
   );

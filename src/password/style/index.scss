@@ -64,6 +64,8 @@
   border: solid 1px #bcbcbc;
   margin: 0 auto;
   outline: none;
+  background-color: transparent;
+  cursor: none;
 
   @include largeScreenWidthLess() {
     $fontSize: 16;
