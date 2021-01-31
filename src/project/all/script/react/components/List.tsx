@@ -28,8 +28,8 @@ const List: FC<TProps> = ({
   type
 }: TProps): ReactElement => {
   return (
-    <li className="all-contents">
-      <a className="all-contents-link" href={href}>
+    <li className="js-fade all-contents">
+      <a className="js-hover all-contents-link" href={href}>
         <div className="all-contents-image-wrap">
           <div
             className="all-contents-image"

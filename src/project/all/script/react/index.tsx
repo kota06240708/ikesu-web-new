@@ -20,9 +20,9 @@ const Template: FC = (): ReactElement => {
       <div className="all-inner">
         <div className="all-heading">
           <div className="all-heading-title">
-            <div className="sw-title black">ALL CREATIVE PROJECTS</div>
+            <div className="js-title sw-title black">ALL CREATIVE PROJECTS</div>
           </div>
-          <p className="all-heading-description">
+          <p className="js-fade all-heading-description">
             I have been involved in digital installation, hardware development,
             AR,
             <br className="all-newline-pc" /> Web development, AI and so on as a

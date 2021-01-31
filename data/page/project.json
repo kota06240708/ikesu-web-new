@@ -4,12 +4,12 @@
       {
         "title": "CONTACT",
         "description": "",
-        "link": "#"
+        "link": "/about#contact"
       },
       {
         "title": "TOP",
         "description": "",
-        "link": "#"
+        "link": "/"
       }
     ]
   }
