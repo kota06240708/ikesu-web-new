@@ -93,6 +93,9 @@ import { getAllData } from './api/connection';
     about.setData();
     about.active();
 
+    // aboutのコンタクトをセット
+    about.setContact(data.master.contact);
+
     // topのアニメーションの準備
     top.setTopData({
       image01: data.products.contents[0]
@@ -243,6 +246,9 @@ import { getAllData } from './api/connection';
 
         // ハッシュスクロール発火
         about.onClickHashScroll();
+
+        // aboutのコンタクトをセット
+        about.setContact(data.master.contact);
 
         text.coating();
         text.active();

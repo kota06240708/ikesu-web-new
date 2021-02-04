@@ -8,13 +8,15 @@ doctype html
 html(lang='ja')
   head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title #{title}
+    title #{data.siteWide.title}
     meta(charset='utf-8')
-    meta(name='description', content='')
+    meta(name='description', content=data.siteWide.description)
     meta(name='author', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1')
     meta(name='format-detection', content='telephone=no')
+    meta(name='robots', content='noindex')
     link(rel='stylesheet', href='/style/index.css')
+    link(rel='shortcut icon', href='/image/favicon.ico')
 
   body#js-body.sw-body.loading(class=`${bgColor !== '' ? bgColor : ''}`)
     include /shared/templates/module/_bg

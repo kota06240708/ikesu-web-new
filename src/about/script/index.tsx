@@ -36,6 +36,7 @@ export class About extends Global {
   private $$sections: HTMLElement[];
   private $$hashs: HTMLElement[];
   private $$aboutBg: HTMLElement;
+  private $$link: HTMLLinkElement;
   private data: TData[];
 
   constructor() {
@@ -50,6 +51,7 @@ export class About extends Global {
     this.$$sections = makeArray(document.querySelectorAll('.js-about-section'));
     this.$$aboutBg = document.getElementById('js-about-bg');
     this.$$hashs = makeArray(document.querySelectorAll('.js-hashs'));
+    this.$$link = document.getElementById('js-about-link') as HTMLLinkElement;
 
     if (this.$$sections.length === 0 && !this.$$aboutBg) {
       return;
@@ -106,6 +108,13 @@ export class About extends Global {
 
     if (target) {
       smoothscroll(offsetTop(target), 0.6);
+    }
+  }
+
+  public setContact(href: string): void {
+    if (this.$$link && href) {
+      this.$$link.href = href;
+      this.$$link.innerText = href;
     }
   }
 }

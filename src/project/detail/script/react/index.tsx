@@ -105,7 +105,7 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
       <div className="detail-nav-contents detail-nav-link-wrap--left">
         <a
           className="js-hover detail-nav-link-wrap"
-          href={`/project/detail/?id=${prevIndex}`}
+          href={`/project/detail/?id=${contents[prevIndex].id}`}
         >
           <div className="detail-nav-link-inner">
             <div className="detail-nav-link">
@@ -125,7 +125,7 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
             <div className="detail-bg-inner">
               <div
                 className="detail-bg"
-                style={{ backgroundImage: 'url(/image/img_example_bg.png)' }}
+                style={{ backgroundImage: `url(${filterData.image.url})` }}
               ></div>
             </div>
           </div>
@@ -161,9 +161,11 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
             src={`https://www.youtube.com/embed/${filterData.movie}?autoplay=1&amp;origin=http://example.com`}
           />
         </div>
-        <p className="js-fade detail-video-text">
-          {nl2br(filterData.movieText)}
-        </p>
+        {filterData.movieText ? (
+          <p className="js-fade detail-video-text">
+            {nl2br(filterData.movieText)}
+          </p>
+        ) : null}
       </div>
       <div className="detail-contents-wrap">{content()}</div>
       <div className="js-fade detail-credit-wrap">
