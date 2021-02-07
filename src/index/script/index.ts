@@ -9,7 +9,7 @@ import { sleep } from '../../shared/scripts/sleep';
 
 import { projectRender } from '../../project/script';
 import { projectAllRender } from '../../project/all/script';
-import { projectDetailRender, Detail } from '../../project/detail/script';
+import { projectDetailRender } from '../../project/detail/script';
 import { aboutRender, About } from '../../about/script';
 import { Password } from '../../password/script';
 
@@ -35,7 +35,6 @@ import { getAllData } from './api/connection';
     const global = new Global();
     const about = new About();
     const top = new Top();
-    const detail = new Detail();
     const password = new Password();
 
     const isTop: () => boolean = () => {
@@ -118,7 +117,6 @@ import { getAllData } from './api/connection';
     // init
     header.init();
     text.active();
-    detail.open();
     password.init();
 
     // ハッシュスクロール発火
@@ -172,8 +170,6 @@ import { getAllData } from './api/connection';
         if (!isAbout()) {
           scrollTo(0, 0);
         }
-
-        detail.close();
       },
       beforeEnter() {
         // プロダクトページのチェック
@@ -202,12 +198,6 @@ import { getAllData } from './api/connection';
         projectDetailRender(data);
         aboutRender(data);
 
-        // マウスイベントを初期化
-        global.mouseRefresh();
-
-        // hash値の場所に移動
-        global.checkHashScroll(0.1);
-
         // topのアニメーションの準備
         top.setTopData({
           image01: data.products.contents[0]
@@ -222,6 +212,12 @@ import { getAllData } from './api/connection';
         });
 
         await sleep(100);
+
+        // マウスイベントを初期化
+        global.mouseRefresh();
+
+        // hash値の場所に移動
+        global.checkHashScroll(0.1);
 
         // リンクを初期化
         barba.refresh();
@@ -252,8 +248,6 @@ import { getAllData } from './api/connection';
 
         text.coating();
         text.active();
-
-        detail.open();
       }
     });
   });

@@ -86,10 +86,6 @@ body {
   height: 100vh;
   position: relative;
   z-index: 1;
-
-  @include largeScreenWidthLess() {
-    height: 100vh;
-  }
 }
 
 .top-menu-wrap {

@@ -80,31 +80,39 @@ export class Top {
 
     // 次のスライドを少しずらす
     gsap.set(this.data[nextIndex].bg, {
-      x: 100
+      x: 120,
+      scale: 1.12
     });
 
     // 次のスライドのクラスを付与
     gsapTo(this.data[currentIndex].bgInner, {
       width: 0,
-      duration: 1,
+      duration: 1.2,
       ease: 'power2.inOut'
     });
 
     gsapTo(this.data[currentIndex].bg, {
       x: -100,
       duration: 1.2,
-      ease: 'power4.inOut'
+      ease: 'power2.inOut'
     });
 
     gsapTo(this.data[nextIndex].bg, {
       x: 0,
-      duration: 1.2,
-      ease: 'power4.inOut'
+      duration: 1.4,
+      ease: 'power2.inOut'
+    });
+
+    gsapTo(this.data[nextIndex].bg, {
+      x: 0,
+      duration: 1.4,
+      scale: 1,
+      ease: 'expo.Out'
     });
 
     await gsapTo(this.data[nextIndex].bgInner, {
       width: '100%',
-      duration: 1,
+      duration: 1.6,
       ease: 'power2.inOut'
     });
 

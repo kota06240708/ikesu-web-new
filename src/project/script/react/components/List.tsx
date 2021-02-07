@@ -40,7 +40,7 @@ const List: FC<TProps> = ({
           <div className="project-contents-heading">
             <div className="project-contents-label-wrap">
               <span className="project-contents-label-number">{`${zeroPadding(
-                String(index + 1)
+                String(index)
               )} -`}</span>
               <p className="project-contents-label">{type}</p>
             </div>

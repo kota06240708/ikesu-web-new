@@ -121,6 +121,9 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
     <div className="detail-wrap">
       <div className="detail-inner">
         <div className="detail-kv-wrap">
+          <div className="sw-guide-wrap sw-guide-wrap--detail">
+            <div className="sw-guide"></div>
+          </div>
           <div className="detail-bg-wrap">
             <div className="detail-bg-inner">
               <div
@@ -133,14 +136,14 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
             <div className="js-fade detail-kv-heading">
               <div className="detail-kv-label-wrap">
                 <span className="detail-kv-label-number">{`${zeroPadding(
-                  String(index + 1)
+                  String(contents.length - index)
                 )} -`}</span>
                 <p className="detail-kv-label">{filterData.type[0]}</p>
               </div>
               <p className="detail-kv-heading-text">{`/ ${filterData.role}`}</p>
             </div>
             <div className="detail-kv-heading-name">
-              <h2 className="js-detail-name detail-kv-heading-name-inner">
+              <h2 className="js-title detail-kv-heading-name-inner">
                 {filterData.title}
               </h2>
             </div>

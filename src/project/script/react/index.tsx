@@ -43,7 +43,7 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
         onHover={() => setIndex(i)}
         title={title}
         role={role}
-        index={i}
+        index={contents.length - i}
         type={type[0]}
         href={`/project/detail/?id=${id}`}
         imgURL={image.url}

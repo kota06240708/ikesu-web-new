@@ -24,10 +24,10 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
     const { title, role, type, id, image } = r;
     return (
       <List
-        key={i}
+        key={contents.length - i}
         title={title}
         role={role}
-        index={i}
+        index={contents.length - i}
         type={type[0]}
         href={`/project/detail/?id=${id}`}
         imgURL={image.url}

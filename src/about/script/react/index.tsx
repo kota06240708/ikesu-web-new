@@ -40,7 +40,7 @@ const Template: FC<TProps> = ({ data }: TProps): ReactElement => {
           </div>
           <div className="about-member-contents-inner">
             <div className="about-member-master-heading-wrap">
-              <div className="about-member-master-image-wrap">
+              <div className="js-fade about-member-master-image-wrap">
                 <img
                   className="about-member-master-image"
                   src={master.image.url}
