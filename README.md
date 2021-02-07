@@ -124,3 +124,4 @@ $ yarn browser
 | **name** | *string* | 名前 | `名前` |
 | **image** | *string* | 画像 | `http://example.com/example.png` |
 | **role** | *string* | 役割 | `役割` |
+
